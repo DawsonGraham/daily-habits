@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20170611174936) do
 
   create_table "questions", force: :cascade do |t|
     t.string "title", null: false
+    t.boolean "text", default: false, null: false
+    t.boolean "integer", default: false, null: false
+    t.boolean "boolean", default: false, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170611174936) do
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.integer "phone_number", null: false
+    t.string "phone_number", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
