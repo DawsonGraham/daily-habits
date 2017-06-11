@@ -1,4 +1,6 @@
 
+phone_number[]
+
 
 5.times do
   User.create(
