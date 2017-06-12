@@ -10,11 +10,12 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @user = @question.user
     if @question.save
-      redirect_to question_path
+      redirect_to @user
     else
       @errors = @question.errors.full_messages
-      render 'new'
+      render '@user'
     end 
   end
 
@@ -27,7 +28,7 @@ class QuestionsController < ApplicationController
 
 
   private 
-    def def question_params
+    def question_params
       params.require(:question).permit(:title, :text, :integer, :boolean, :user_id)
     end
       
