@@ -15,7 +15,6 @@
  */
 html{
   background-image: url("https://unsplash.it/1600/1000/?image=1073");
-  overflow: hidden;
 }
 
 .body-wrapper {
@@ -24,7 +23,7 @@ html{
   background-color: white;
   margin:auto;
   border-radius:0.2em;
-  opacity: 0.99
+  opacity: 0.95
 }
 
 .title {
@@ -34,4 +33,44 @@ html{
   margin: 2.5em auto 0 auto;
   font-size:9em;
   color: #f3f2f2;
+}
+
+.nav-title{
+  height: 1em;
+  width: 3em;
+  text-align: center;
+  margin: auto;
+  font-size:7em;
+  color: #f3f2f2;
+}
+
+.logs{
+  width:12em;
+  float: right;
+  /*margin:-55px 30px 0px 0px;*/
+  text-align:center;
+}
+.logs p {
+  font-family: Raleway, Arial;
+  color:white;
+  display: inline-block;
+  padding-right:10px;
+  font-size:120%;
+}
+.logs a {
+  font-family: Raleway, Arial;
+  color:white;
+  display: inline-block;
+  font-size:120%;
+  text-decoration: none
+}
+
+.home a{
+  font-family: Raleway, Arial;
+  float:left;
+  text-decoration: none;
+  color:white;
+  /*font-size:160%;*/
+  /*margin-top:-44px;*/
+  margin-left: 4.4em;
 }
