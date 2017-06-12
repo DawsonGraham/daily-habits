@@ -1,7 +1,9 @@
 class TextAnswersController < ApplicationController
 
   def show
-    @text_answers = TextAnswer.all 
+    @user = current_user
+    @question = Question.find(params[:question_id])
+    @text_answer = TextAnswer.find(params[:id])
   end
 
   def new
@@ -9,12 +11,15 @@ class TextAnswersController < ApplicationController
   end
 
   def create
+    @user = current_user
+    @question = Question.find(params[:question_id])
     @text_answer = TextAnswer.new(text_answer_params)
+    @text_answer.question_id = @question.id
     if @text_answer.save
-      redirect_to root_path
+      redirect_to @user
     else
       @errors = @text_answer.errors.full_messages
-      render 'new'
+      redirect_to @user
     end 
   end
 
