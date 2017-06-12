@@ -13,4 +13,13 @@ class User < ApplicationRecord
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
+
+  def recent_questions(num)
+    self.questions.where(created_at: (Time.now - num.day)..Time.now)
+  end
+
+  def number_of_users_questions
+    self.questions.count
+  end
+
 end
