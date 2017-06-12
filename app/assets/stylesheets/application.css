@@ -26,6 +26,15 @@ html{
   opacity: 0.95
 }
 
+.login {
+  width:70%;
+  height:1000px;
+  background-color: none;
+  margin:auto;
+  border-radius:0.2em;
+  opacity: 0.95
+}
+
 .title {
   height: 1.5em;
   width: 3em;
@@ -73,4 +82,13 @@ html{
   /*font-size:160%;*/
   /*margin-top:-44px;*/
   margin-left: 4.4em;
+}
+
+.error {
+  color:white;,
+  font-size: 10em;
+  width:20em;
+  height: 3em;
+  margin:auto;
+  text-align:center;
 }

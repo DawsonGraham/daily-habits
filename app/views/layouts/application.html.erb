@@ -12,7 +12,7 @@
   <body>
   <% if @errors %>
     <% @errors.each do |error| %>
-      <p> <%= error %> </p>
+      <p class="error"> <%= error %> </p>
     <% end %>
   <% end %>
   <%= render partial: '/layouts/header' unless @disable_nav %>
