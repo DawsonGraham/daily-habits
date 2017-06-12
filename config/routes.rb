@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :new, :show, :create] do
+  resources :users, only: [:index, :new, :show, :create, :edit] do
     resources :questions, only: [:show, :new, :create, :destroy] do
       resources :text_answers, only: [:show, :new, :create]
       resources :boolean_answers, only: [:show, :new, :create]
