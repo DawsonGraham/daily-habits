@@ -1,3 +1,46 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main_title{
+  height: 1.5em;
+  width: 3em;
+  text-align: center;
+  margin: 2.5em auto 0 auto;
+  font-size:9em;
+  color: #f3f2f2;
+  overflow: hidden;
+  transform: translateY(-50%); 
+  white-space: nowrap;
+  -webkit-animation: fadein 4s;
+}
+
+
+
+@keyframes fadein {
+   from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+.main_login_button{
+  height:1.4em;
+  width:6em;
+  border:solid;
+  border-width:1px;
+  margin:auto;
+  margin-top:-3em;
+  text-align:center;
+  font-size:2em;
+  background-color:#ff3333;
+  opacity:0.85;
+  border:none;
+  border-radius:30px;
+   -webkit-animation: fadein 4s;
+}
+
+.main_login_button a{
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  text-decoration: none;
+  color:white;
+}

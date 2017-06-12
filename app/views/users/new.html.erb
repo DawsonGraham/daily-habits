@@ -15,10 +15,15 @@
       <%= f.label :email %> <br>
       <%= f.text_field :email, placeholder: 'email', required: true, autofocus:   true %>
     </p>
+
+    <p>
+      <%= f.label :phone_number %> <br>
+      <%= f.text_field :phone_number, placeholder: 'phone_number', required: true, autofocus:   true %>
+    </p>
   
     <p>
       <%= f.label :password %> <br>
-      <%= f.text_field :password, placeholder: 'password', required: true,  autofocus: true %>
+      <%= f.password_field :password, placeholder: 'password', required: true,  autofocus: true %>
     </p>
   
     <p>
@@ -26,4 +31,5 @@
     </p>
   
   <% end  %>
+
 </div>
