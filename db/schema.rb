@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 20170611174936) do
   create_table "boolean_answers", force: :cascade do |t|
     t.boolean "response", null: false
     t.bigint "question_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_boolean_answers_on_question_id"
@@ -26,6 +30,10 @@ ActiveRecord::Schema.define(version: 20170611174936) do
   create_table "integer_answers", force: :cascade do |t|
     t.integer "response", null: false
     t.bigint "question_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_integer_answers_on_question_id"
@@ -45,6 +53,10 @@ ActiveRecord::Schema.define(version: 20170611174936) do
   create_table "text_answers", force: :cascade do |t|
     t.string "response", null: false
     t.bigint "question_id"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_text_answers_on_question_id"
@@ -56,6 +68,10 @@ ActiveRecord::Schema.define(version: 20170611174936) do
     t.string "phone_number", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string "access_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

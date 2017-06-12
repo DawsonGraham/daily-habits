@@ -1,8 +1,7 @@
 <div class="body-wrapper">
-   <h1 class="user_name"><%= @user.full_name %></h1>
    <h3><%= @user.full_name %>'s questions</h3>
    <% @questions.each do |question| %>
-    <p><%= question.title %></p>
+    <p class="question-show"><%= question.title %></p>
    <% end %>
   
     <h3>Add a Question</h3>
@@ -15,17 +14,17 @@
     </p>
   
     <p>
-      <%= f.label :integer_answers %>
+      <%= f.label :rate %>
       <%= f.check_box :integer_answers %>
     </p>
   
     <p>
-      <%= f.label :boolean_answers %>
+      <%= f.label :complete? %>
       <%= f.check_box :boolean_answers %>
     </p>
   
     <p>
-      <%= f.label :text_answers %>
+      <%= f.label :summary %>
       <%= f.check_box :text_answers %>
     </p>
   
