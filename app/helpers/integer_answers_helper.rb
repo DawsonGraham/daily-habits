@@ -1,0 +1,2 @@
+module IntegerAnswersHelper
+end
