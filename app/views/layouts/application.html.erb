@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Habits</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <p class="error"> <%= error %> </p>
+    <% end %>
+  <% end %>
+  <%= render partial: '/layouts/header' unless @disable_nav %>
+    <%= yield %>
+  </body>
+</html>
