@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @disable_nav = true
   end
 
   def create
@@ -9,6 +10,7 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to @user
     else
+      @disable_nav = true
       @errors = ["Incorrect email or password"]
       render 'new'
     end 
