@@ -1,4 +1,6 @@
 <div class="body-wrapper">
+
+<%= image_tag @user.avatar.url(:medium) %>
   
   <h1 class="user_name"><%= @user.full_name %></h1>
       <% @questions.each do |question| %>
