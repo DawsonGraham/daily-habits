@@ -7,9 +7,36 @@ class Question < ApplicationRecord
   validates_presence_of :title
   validates_uniqueness_of :title
 
+  scope :last_seven_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
+  scope :last_fourteen_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
+  scope :last_twentyone_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
+  scope :last_twentyeight_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
+
 
   def average_rating
     self.integer_answers.reduce(0) {|sum, answer| sum + answer.response }.to_f / self.integer_answers.length
+  end
+
+  def total_tasks_completed
+    count = []
+    self.boolean_answers.each do |answer|
+      if (answer.response == true)
+        count << answer.id
+      end
+    end
+    return count.length
+  end
+
+  def total_boolean_responses
+    self.boolean_answers.count
+  end
+
+  def total_integer_responses
+    self.integer_answers.count
+  end
+
+  def total_text_responses
+    self.text_answers.count
   end
 
 end
