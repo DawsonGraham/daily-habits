@@ -56,8 +56,10 @@ ActiveRecord::Schema.define(version: 20170611174936) do
     t.string "phone_number", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.string "access_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_users_on_access_token"
   end
 
   add_foreign_key "boolean_answers", "questions"

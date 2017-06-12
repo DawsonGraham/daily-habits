@@ -17,7 +17,7 @@ module Api
     def verify_access_token
       user = User.find_by(access_token: params[:session][:access_token])
         if user
-          render text: "verified", status: 200
+          render text: "Verified", status: 200
         else
           render text: "Token failed verification", status: 422
         end

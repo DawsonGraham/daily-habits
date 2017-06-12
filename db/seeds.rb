@@ -1,9 +1,12 @@
+require 'securerandom'
+
 5.times do
   User.create(
     first_name: Faker::Superhero.name,
     last_name: Faker::Superhero.name,
     phone_number: Faker::PhoneNumber.phone_number,
     email: Faker::Internet.email,
+    access_token: SecureRandom.urlsafe_base64,
     password: Faker::Superhero.name
   )
 end

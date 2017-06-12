@@ -1,15 +1,14 @@
 <div class="body-wrapper">
   
   <h1 class="user_name"><%= @user.full_name %></h1>
-      <% @questions.each do |question| %>
-        <div class="question-wrapper">
-          <p><%= question.title %></p>
-          <% if question.text %>
-            <% question.text_answers.each do |answer| %>
-              <%= answer.response %>
-            <% end %>
-          <% else %>
-            <%= form_for ([@user, question, question.text_answers.build]) do |f|%>
+    <% @questions.each do |question| %>
+      <div class="question-wrapper">
+        <p>Question: <%= question.title %></p>
+        
+        <% if question.text_answers.any? %>
+          <p>Answer: <%= question.text_answers[0].response %></p>
+        <% else %>
+         <%= form_for([@user, question, question.text_answers.build]) do |f|%>
               <p>
                 <%= f.label :response %>
                 <%= f.text_field :response %>
@@ -17,36 +16,8 @@
               <%= hidden_field :question_id, value: question.id %>
               <%= f.submit 'balls' %>
             <% end  %>
-          <% end %>
-        </div>
-      <% end  %>
-
-
-  <div class="question_form">
-    <%= form_for ([@user, @user.questions.build]) do |f| %>
-    <p>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </p>
-  
-    <p>
-      <%= f.label :integer_answers %>
-      <%= f.check_box :integer_answers %>
-    </p>
-  
-    <p>
-      <%= f.label :boolean_answers %>
-      <%= f.check_box :boolean_answers %>
-    </p>
-  
-    <p>
-      <%= f.label :text_answers %>
-      <%= f.check_box :text_answers %>
-    </p>
-  
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  
-    <%= f.submit "submit" %>
-    <% end %>
-  </div>
+        <% end %>
+        
+      </div>
+    <% end  %>
 </div>
