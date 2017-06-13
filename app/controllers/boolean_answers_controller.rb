@@ -1,21 +1,24 @@
 class BooleanAnswersController < ApplicationController
 
   def show
-    @boolean_answers = TextAnswer.all 
+    @boolean_answers = BooleanAnswer.all 
   end
 
   def new
-    @boolean_answer = TextAnswer.new
+    @boolean_answer = BooleanAnswer.new
   end
 
   def create
-    @boolean_answer = TextAnswer.new(boolean_answer_params)
-    if @boolean_answer.save
-      redirect_to root_path
-    else
-      @errors = @boolean_answer.errors.full_messages
-      render 'new'
-    end 
+    @user = current_user
+    @question = Question.find(params[:question_id])
+    @boolean_answer = BooleanAnswer.new(boolean_answer_params)
+    @boolean_answer.question_id = @question.id
+      if @boolean_answer.save
+        redirect_to @user
+      else
+        @errors = @boolean_answer.errors.full_messages
+        redirect_to @user
+      end 
   end
 
 

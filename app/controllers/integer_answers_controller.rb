@@ -1,20 +1,23 @@
 class IntegerAnswersController < ApplicationController
 
   def show
-    @integer_answers = TextAnswer.all 
+    @integer_answers = IntegerAnswer.all 
   end
 
   def new
-    @integer_answer = TextAnswer.new
+    @integer_answer = IntegerAnswer.new
   end
 
   def create
-    @integer_answer = TextAnswer.new(integer_answer_params)
+    @user = current_user
+    @question = Question.find(params[:question_id])
+    @integer_answer = IntegerAnswer.new(integer_answer_params)
+    @integer_answer.question_id = @question.id
     if @integer_answer.save
-      redirect_to root_path
+      redirect_to @user
     else
       @errors = @integer_answer.errors.full_messages
-      render 'new'
+      redirect_to @user
     end 
   end
 
