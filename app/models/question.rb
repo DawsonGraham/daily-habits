@@ -14,7 +14,7 @@ class Question < ApplicationRecord
   scope :last_twentyone_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
   scope :last_twentyeight_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
 
-  private
+  # private
 
   # def option_selector
   #   if !self.text && !self.integer && !self.boolean 
