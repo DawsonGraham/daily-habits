@@ -13,6 +13,7 @@ class BooleanAnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @boolean_answer = BooleanAnswer.new(boolean_answer_params)
     @boolean_answer.question_id = @question.id
+    @boolean_answer.ip_address = fake_ip
       if @boolean_answer.save
         redirect_to user_questions_path(@user)
       else
@@ -24,6 +25,14 @@ class BooleanAnswersController < ApplicationController
 
   private
     def boolean_answer_params
-      params.require(:boolean_answer).permit(:response, :question_id)
+      params.require(:boolean_answer).permit(:response, :question_id, :ip_address)
+    end
+
+    def random_num
+      rand(1..9)
+    end
+
+    def fake_ip
+      "#{random_num}73.46.64.17#{random_num}"
     end
 end
