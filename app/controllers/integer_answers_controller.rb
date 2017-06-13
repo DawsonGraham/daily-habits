@@ -14,10 +14,10 @@ class IntegerAnswersController < ApplicationController
     @integer_answer = IntegerAnswer.new(integer_answer_params)
     @integer_answer.question_id = @question.id
     if @integer_answer.save
-      redirect_to @user
+      redirect_to user_questions_path(@user)
     else
       @errors = @integer_answer.errors.full_messages
-      redirect_to @user
+      redirect_to user_questions_path(@user)
     end 
   end
 

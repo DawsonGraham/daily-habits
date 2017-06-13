@@ -16,10 +16,10 @@ class TextAnswersController < ApplicationController
     @text_answer = TextAnswer.new(text_answer_params)
     @text_answer.question_id = @question.id
     if @text_answer.save
-      redirect_to @user
+      redirect_to user_questions_path(@user)
     else
       @errors = @text_answer.errors.full_messages
-      redirect_to @user
+      redirect_to user_questions_path(@user)
     end 
   end
 

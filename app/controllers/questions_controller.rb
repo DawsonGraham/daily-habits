@@ -16,10 +16,10 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @user = @question.user
     if @question.save
-      redirect_to @user
+      redirect_to user_questions_path(@user)
     else
       @errors = @question.errors.full_messages
-      render '@user'
+      redirect_to user_questions_path(@user)
     end 
   end
 
@@ -29,6 +29,11 @@ class QuestionsController < ApplicationController
     @question.destroy
     redirect_to edit_user_path(@user)
   end 
+
+  def index
+    @user = User.find(params[:user_id])
+    @questions = Question.where(user_id: @user.id)
+  end
 
 
 

@@ -14,10 +14,10 @@ class BooleanAnswersController < ApplicationController
     @boolean_answer = BooleanAnswer.new(boolean_answer_params)
     @boolean_answer.question_id = @question.id
       if @boolean_answer.save
-        redirect_to @user
+        redirect_to user_questions_path(@user)
       else
         @errors = @boolean_answer.errors.full_messages
-        redirect_to @user
+        redirect_to user_questions_path(@user)
       end 
   end
 

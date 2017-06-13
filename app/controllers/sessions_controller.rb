@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       login(@user)
-      redirect_to @user
+      redirect_to users_questions_path(@user)
     else
       @disable_nav = true
       @errors = ["Incorrect email or password"]
