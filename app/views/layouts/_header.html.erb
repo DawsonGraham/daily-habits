@@ -1,8 +1,9 @@
 <h1 class="nav-title">habits</h1>
-<p class="home"><%= link_to "home", root_path %></p>
   <div class="logs">
   <% if logged_in? %>
     <p><%= link_to "Logout", session_path(current_user), :method => :delete %></p>
+    <p><%= link_to "Settings", edit_user_path %></p>
+    <p><%= link_to "Today's Questions", user_path %></p>
   <% else %>
     <p><%= link_to "login", new_session_path %></p>
     <p><%= link_to "sign up", new_user_path %></p>
