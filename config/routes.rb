@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'messages/reply'
+
+  resource :messages do 
+    collection do
+      post 'reply'
+    end
+  end
+
   resources :users, only: [:index, :new, :show, :create, :edit] do
     resources :questions, only: [:index, :show, :new, :create, :destroy] do
       resources :text_answers, only: [:show, :new, :create]
