@@ -25,7 +25,7 @@ class IntegerAnswersController < ApplicationController
 
   private
     def integer_answer_params
-      params.require(:integer_answer).permit(:response, :question_id)
+      params.require(:integer_answer).permit(:response, :question_id, :avatar)
     end
 
     def random_num
