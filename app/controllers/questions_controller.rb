@@ -1,5 +1,9 @@
 class QuestionsController < ApplicationController
 
+  def method_name
+    
+  end
+
   def show
     @questions = Question.all
   end
@@ -20,9 +24,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     @question = Question.find(params[:id])
-    @question.destroy!
-    redirect_to question_path
+    @question.destroy
+    redirect_to edit_user_path(@user)
   end 
 
 

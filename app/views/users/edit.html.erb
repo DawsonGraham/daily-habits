@@ -2,7 +2,9 @@
    <h3><%= @user.full_name %>'s questions</h3>
    <% @questions.each do |question| %>
     <p class="question-show"><%= question.title %></p>
+    <%= link_to 'Delete', user_question_path(@user, question), method: :delete %>
    <% end %>
+
   
     <h3>Add a Question</h3>
 
@@ -15,22 +17,24 @@
   
     <p>
       <%= f.label :rate %>
-      <%= f.check_box :integer_answers %>
+      <%= f.check_box :integer, {}, true, false  %>
+
     </p>
   
     <p>
       <%= f.label :complete? %>
-      <%= f.check_box :boolean_answers %>
+      <%= f.check_box :boolean, {}, true, false %>
     </p>
   
     <p>
       <%= f.label :summary %>
-      <%= f.check_box :text_answers %>
+      <%= f.check_box :text, {}, true, false %>
     </p>
   
     <%= f.hidden_field :user_id, value: current_user.id %>
   
     <%= f.submit "submit" %>
     <% end %>
+
   </div>
 </div>
