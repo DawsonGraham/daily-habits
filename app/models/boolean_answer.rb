@@ -5,5 +5,5 @@ class BooleanAnswer < ApplicationRecord
   validates_attachment :avatar,
   content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  validates_presence_of :response
+  # validates_presence_of :response
 end

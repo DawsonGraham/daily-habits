@@ -1,9 +1,11 @@
 class Question < ApplicationRecord
-  belongs_to :user
-  has_many :boolean_answers
-  has_many :integer_answers
-  has_many :text_answers
 
+  belongs_to :user
+  has_many :boolean_answers, :dependent => :delete_all
+  has_many :integer_answers, :dependent => :delete_all
+  has_many :text_answers, :dependent => :delete_all
+
+  # validate :option_selector
   validates_presence_of :title
   validates_uniqueness_of :title
 
@@ -12,6 +14,13 @@ class Question < ApplicationRecord
   scope :last_twentyone_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
   scope :last_twentyeight_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
 
+  private
+
+  # def option_selector
+  #   if !self.text && !self.integer && !self.boolean 
+  #    errors.add(:option, "one answer type is required")
+  #   end
+  # end
 
   def average_rating
     self.integer_answers.reduce(0) {|sum, answer| sum + answer.response }.to_f / self.integer_answers.length
@@ -37,6 +46,10 @@ class Question < ApplicationRecord
 
   def total_text_responses
     self.text_answers.count
+  end
+
+  def completion_rate
+    (total_tasks_completed / total_boolean_responses).to_f
   end
 
 end
