@@ -1,0 +1,18 @@
+<div class="body-wrapper">
+  <h1>Stats</h1>
+  <% @questions.each do |question| %>
+    <p><%= question.title %> <br>
+    
+    <% if question.integer %>
+      average rating: <%= question.average_rating %><br>
+    <% end %>
+    
+    <% if question.boolean %>
+      completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
+    <% end %>
+
+    </p>
+
+      
+  <% end %>
+<div>
