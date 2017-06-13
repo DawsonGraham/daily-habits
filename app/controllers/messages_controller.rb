@@ -27,7 +27,7 @@ class MessagesController < ApplicationController
         to: @from_number,
         body: "Here are your questions for today: \n" + questions_today + 
  
-"\nPlease answer with the question's number and parenthesis as the first two characters. Ex: '1) ...'"
+"\n\nPlease answer with the question's number and parenthesis as the first two characters. Ex: '1) ...'"
         )
       end
 
@@ -41,11 +41,7 @@ class MessagesController < ApplicationController
         if !split_message[1][0..4].include? ','
           
           if split_message[1].downcase == "yes" || split_message[1].downcase == "ya" || split_message[1].downcase == "y" || split_message[1].downcase == "n" || split_message[1].downcase == "no"
-             if split_message[1].downcase == "yes" || split_message[1].downcase == "ya" || split_message[1].downcase == "y"
-               question.boolean_answers.create(response: true) 
-             elsif split_message[1].downcase == "n"
-               question.boolean_answers.create(response: false)
-             end
+             split_message[1].downcase == "yes" || split_message[1].downcase == "ya" || split_message[1].downcase == "y" ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)
           
           elsif split_message[1].to_i > 0
             question.integer_answers.create(response: split_message[1].to_i)
@@ -61,19 +57,11 @@ class MessagesController < ApplicationController
 
             # double_split will = [5, some random text] or [y, 5] or [5, random text here]
             if double_split[0].downcase == "y" || double_split[0].downcase == "yes" || double_split[0].downcase == "n" || double_split[0].downcase == "no" && double_split[1].to_i > 0
-              if double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y"
-                question.boolean_answers.create(response: true)
-              elsif double_split[0].downcase == "n"
-                question.boolean_answers.create(response: false)
-              end
+              double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y" ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)
               question.integer_answers.create(response: double_split[1])
 
             elsif double_split[0].downcase == "y" || double_split[0].downcase == "n" && double_split[1].to_i == 0
-              if double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y"
-                question.boolean_answers.create(response: true)
-              elsif double_split[0].downcase == "n"
-                question.boolean_answers.create(response: false)
-              end
+              double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y" ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)
               question.text_answers.create(response: double_split[1])
 
             elsif double_split[0].to_i > 0 
@@ -87,11 +75,7 @@ class MessagesController < ApplicationController
             triple_split.unshift(double_split[0])
             triple_split[2] = triple_split[2][1..-1]
 
-            if triple_split[0].downcase == 'y' || triple_split[0].downcase == 'yes' || triple_split[0].downcase == 'ya'
-              question.boolean_answers.create(response: true)
-            elsif triple_split[0].downcase == 'n'
-              question.boolean_answers.create(response: false)
-            end
+            triple_split[0].downcase == 'y' || triple_split[0].downcase == 'yes' || triple_split[0].downcase == 'ya' ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)
             question.integer_answers.create(response: triple_split[1])
             question.text_answers.create(response: triple_split[2])
           end
@@ -192,7 +176,7 @@ class MessagesController < ApplicationController
           int_text_bool_check << bool_answer.created_at.strftime('%Y%m%d')
         end
         if !int_text_bool_check.include? time_converter.strftime('%Y%m%d')
-          show.push("\n #{question.id}) #{question.title} (Y/N, Rating, Text) \n")
+          show.push("\n #{question.id}) #{question.title} (Y/N, Rating, Text) \n\n")
         end
       end
     end
