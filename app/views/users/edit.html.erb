@@ -1,4 +1,7 @@
 <div class="body-wrapper">
+  <% if @user.avatar_file_name %>
+    <%= image_tag @user.avatar.url(:medium) %>
+  <% end %>
    <h3><%= @user.full_name %>'s questions</h3>
    <% @questions.each do |question| %>
     <p class="question-show"><%= question.title %></p>

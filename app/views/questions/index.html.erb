@@ -1,0 +1,54 @@
+<div class="body-wrapper">
+  
+  <h1 class="user_name"><%= @user.full_name %></h1>
+    <% @questions.each do |question| %>
+      <div class="question-wrapper">
+        <p>Question: <%= question.title %></p>
+
+        <% if question.text %>
+          <% if question.text_answers.any? %>
+            <p>Answer: <%= question.text_answers[0].response %></p>
+          <% else %>
+           <%= form_for([@user, question, question.text_answers.build]) do |f|%>
+                <p>
+                  <%= f.label :response %>
+                  <%= f.text_field :response %>
+                </p>
+                <%= hidden_field :question_id, value: question.id %>
+                <%= f.submit 'submit' %>
+              <% end  %>
+          <% end %>
+        <% end %>
+        
+        <% if question.boolean %>
+          <% if question.boolean_answers.any? %>
+            <p>Answer: <%= question.boolean_answers[0].response %></p>
+          <% else %>
+
+            <%= form_for([@user, question, question.boolean_answers.build]) do |f|%>
+              <%= f.hidden_field :response, value: true%>
+            <%= f.submit 'yes' %>
+            <% end %>
+
+            <%= form_for([@user, question, question.boolean_answers.build]) do |f|%>
+              <%= f.hidden_field :response, value: false%>
+            <%= f.submit 'no' %>
+            <% end %>
+            
+          <% end %>
+        <% end %>
+
+        <% if question.integer %>
+          <% if question.integer_answers.any? %>
+            <p>Answer: <%= question.integer_answers[0].response %></p>
+          <% else %>
+            <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
+              <%= f.select :response, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]) %>
+            <%= f.submit 'submit' %>
+            <% end %>
+          <% end %>
+        <% end %>
+        
+      </div>
+    <% end  %>
+</div>

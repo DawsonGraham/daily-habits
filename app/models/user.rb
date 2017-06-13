@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  before_create :generate_access_token
+  # before_create :generate_access_token
   has_many :questions
   has_many :boolean_answers, through: :questions
   has_many :integer_answers, through: :questions
@@ -15,9 +15,9 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true
   has_secure_password
 
-  def User.new_token
-    SecureRandom.urlsafe_base64
-  end
+  # def User.new_token
+  #   SecureRandom.urlsafe_base64
+  # end
 
 
   def full_name
@@ -33,9 +33,9 @@ class User < ApplicationRecord
   end
 
   private
-    def generate_access_token
-      begin
-        self.access_token = User.new_token
-      end while self.class.exists?(access_token: access_token)
-    end
+    # def generate_access_token
+    #   begin
+    #     self.access_token = User.new_token
+    #   end while self.class.exists?(access_token: access_token)
+    # end
 end
