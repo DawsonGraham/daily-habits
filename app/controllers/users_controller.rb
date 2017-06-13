@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def index
     @disable_nav = true
+    p "*" * 100
+    p request.remote_ip
   end
 
   def new

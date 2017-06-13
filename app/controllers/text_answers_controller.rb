@@ -15,6 +15,7 @@ class TextAnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @text_answer = TextAnswer.new(text_answer_params)
     @text_answer.question_id = @question.id
+    @text_answer.ip_address = fake_ip
     if @text_answer.save
       redirect_to user_questions_path(@user)
     else
@@ -27,5 +28,13 @@ class TextAnswersController < ApplicationController
   private
     def text_answer_params
       params.require(:text_answer).permit(:response, :question_id)
+    end
+
+    def random_num
+      rand(1..9)
+    end
+
+    def fake_ip
+      "#{random_num}73.46.64.17#{random_num}"
     end
 end
