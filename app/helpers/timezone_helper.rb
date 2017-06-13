@@ -1,6 +1,6 @@
 module TimezoneHelper
   def time_converter
-    Time.zone = "GMT"
+    Time.zone = "UTC"
     Time.zone.now
   end
 end
