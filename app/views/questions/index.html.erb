@@ -6,7 +6,7 @@
         <p>Question: <%= question.title %></p>
 
         <% if question.text %>
-          <% if question.text_answers.any? %>
+          <% if question.text_answers.any? && question.text_answers.last.created_at.strftime('%Y%m%d') == Time.now.strftime('%Y%m%d')%>
             <p>Answer: <%= question.text_answers[0].response %></p>
           <% else %>
            <%= form_for([@user, question, question.text_answers.build]) do |f|%>
@@ -21,7 +21,7 @@
         <% end %>
         
         <% if question.boolean %>
-          <% if question.boolean_answers.any? %>
+          <% if question.boolean_answers.any? && question.boolean_answers.last.created_at.strftime('%Y%m%d') == Time.now.strftime('%Y%m%d')%>
             <p>Answer: <%= question.boolean_answers[0].response %></p>
           <% else %>
 
@@ -39,7 +39,7 @@
         <% end %>
 
         <% if question.integer %>
-          <% if question.integer_answers.any? %>
+          <% if question.integer_answers.any? && question.integer_answers.last.created_at.strftime('%Y%m%d') == Time.now.strftime('%Y%m%d')%>
             <p>Answer: <%= question.integer_answers[0].response %></p>
           <% else %>
             <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
