@@ -9,18 +9,6 @@ class Question < ApplicationRecord
   validates_presence_of :title
   validates_uniqueness_of :title
 
-  scope :last_seven_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
-  scope :last_fourteen_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
-  scope :last_twentyone_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
-  scope :last_twentyeight_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
-
-  # private
-
-  # def option_selector
-  #   if !self.text && !self.integer && !self.boolean 
-  #    errors.add(:option, "one answer type is required")
-  #   end
-  # end
 
   def average_rating
     self.integer_answers.reduce(0) {|sum, answer| sum + answer.response }.to_f / self.integer_answers.length
