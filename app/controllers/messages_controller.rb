@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   def reply
     message_body = params["Body"]
     @from_number = params["From"]
-    user = User.find_by(phone_number: @from_number[1..-1])
+    user = User.find_by(phone_number: @from_number[2..-1])
     questions = user.questions
 
     if message_body.downcase == 'habits'
