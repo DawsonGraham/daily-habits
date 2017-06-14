@@ -52,19 +52,44 @@ class MessagesController < ApplicationController
 
     elsif message_body.downcase == "weather"
       boot_twilio
-      key = ENV['WEATHER_KEY']
-
-      response = HTTParty.get("http://api.wunderground.com/api/#{key}/geolookup/conditions/q/#{params["FromZip"]}.json")
-      
-      weather = response['current_observation']['weather']
-      temp = response['current_observation']['temp_f']
-      wind = response['current_observation']['wind_mph']
-
       sms = @client.messages.create(
           from: ENV['TWILIO_NUMBER'],
           to: @from_number,
-          body: "The weather is #{weather}. The temp is #{temp}℉ with #{wind}mph winds"
+          body: "Please provide a city name after 'Weather'."
         )
+
+    elsif message_body[0..6].downcase == "weather"
+      boot_twilio
+      key = ENV['WEATHER_KEY']
+      split = message_body.split(" ", 2)
+      city = split[1]
+      city = city.split.map(&:capitalize).join('_')
+
+      response = HTTParty.get("http://api.wunderground.com/api/#{key}/geolookup/conditions/q/#{params["FromState"]}/#{city}.json")
+    
+      if response.parsed_response["response"]["error"] != nil
+        sms = @client.messages.create(
+          from: ENV['TWILIO_NUMBER'],
+          to: @from_number,
+          body: "Sorry, no cities matched your search. Please check the spelling and try again!."
+        )
+      
+      else
+        if city.include? "_"
+          city = city.split("_").join(" ")
+        end
+
+        weather = response['current_observation']['weather']
+        temp = response['current_observation']['temp_f']
+        wind = response['current_observation']['wind_mph']
+
+        sms = @client.messages.create(
+            from: ENV['TWILIO_NUMBER'],
+            to: @from_number,
+            body: "The weather is #{weather} in #{city}. The temp is #{temp}℉ with #{wind}mph winds."
+          )
+      end
+
     else    
       boot_twilio
       sms = @client.messages.create(
@@ -73,7 +98,7 @@ class MessagesController < ApplicationController
           body: "Incorrect keyword, try these:
 - 'Habits' to bring up your remaining questions to answer today
 - 'Question #)' followed by your answer types to log and complete the question for today
-- 'Weather' to see the questions you've answered today"
+- 'Weather (city name)' to get information about the weather conditions today"
           )
     end  
   end
