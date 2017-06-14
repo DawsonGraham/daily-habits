@@ -11,13 +11,22 @@ class UsersController < ApplicationController
   end
 
   def create
+    p "*" * 90
+    p params
+    p "*" * 90
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      redirect_to @user, notice: "Sign up successful dick"
+      respond_to do |format|
+        format.html { redirect_to @user, notice: "Sign up successful dick" }
+        format.json { render json: @user }
+      end
     else
       @errors = @user.errors.full_messages
-      render 'new'
+      respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @errors }
+      end
     end 
   end
 
@@ -29,6 +38,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @questions = @user.questions
+
     gon.answers = []
     @user.text_answers.each do |txt|
       gon.answers << txt 
@@ -39,7 +49,12 @@ class UsersController < ApplicationController
     @user.integer_answers.each do |int|
       gon.answers << int
     end
-    p gon.answers
+    
+    respond_to do |format|
+      format.html { }
+      format.json { render json: @user }
+    end
+
   end 
 
   private
