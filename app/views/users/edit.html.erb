@@ -9,23 +9,24 @@
    <% end %>
 
   
-    <h3>Add a Question</h3>
+    <h3 style="text-align: center; margin-right: 5%">Add a Question</h3>
 
     <div class="question_form">
     <%= form_for ([@user, @user.questions.build]) do |f| %>
     <p>
-      <%= f.label :title %>
+      Question Title:
       <%= f.text_field :title %>
     </p>
-  
-    <p>
-      <%= f.label :rate %>
+
+    <b>Answer Types:</b>
+    <p> 
+      <%= f.label :rating %>
       <%= f.check_box :integer, {}, true, false  %>
 
     </p>
   
     <p>
-      <%= f.label :complete? %>
+      <%= f.label :completion %>
       <%= f.check_box :boolean, {}, true, false %>
     </p>
   
