@@ -1,17 +1,24 @@
 function initMap() {
-  var answer1 = {
-    info: '<strong>Answered on July 12th, 2017</strong>',
-    lat: 37.7749, 
-    long: -122.4194
-  };
 
   var length = (gon.answers).length
-
   var locations = [];
+
+  String.prototype.supplant = function (o) {
+    return this.replace(/{([^{}]*)}/g,
+      function (a, b) {
+          var r = o[b];
+          return typeof r === 'string' || typeof r === 'number' ? r : a;
+      }
+    );
+  };
+
 
   for (i = 0; i < length; i++) {
     var answer_arr = []
-    answer_arr.push("<strong>Answered on July 12th, 2017</strong>");
+    answer_arr.push("<strong>Answered {answer} on {created_at}</strong>".supplant({
+        answer: gon.answers[i].response, created_at: 
+      })
+    );
     answer_arr.push(gon.answers[i].latitude)
     answer_arr.push(gon.answers[i].longitude)
     answer_arr.push(i)

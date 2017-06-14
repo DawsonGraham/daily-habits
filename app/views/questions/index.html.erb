@@ -7,10 +7,10 @@
 
         <% if question.text %>
           <% if question.text_answers.any? && question.text_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.text_answers[0].response %></p>
+            <p>Answer: <%= question.text_answers.last.response %></p>
 
-            <% if question.text_answers[0].avatar_file_name %>
-              <%= image_tag question.text_answers[0].avatar.url(:medium) %>
+            <% if question.text_answers.last.avatar_file_name %>
+              <%= image_tag question.text_answers.last.avatar.url(:medium) %>
             <% end %>
 
           <% else %>
@@ -30,10 +30,10 @@
         
         <% if question.boolean %>
           <% if question.boolean_answers.any? && question.boolean_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.boolean_answers[0].response %></p>
+            <p>Answer: <%= question.boolean_answers.last.response %></p>
 
-            <% if question.boolean_answers[0].avatar_file_name %>
-              <%= image_tag question.boolean_answers[0].avatar.url(:medium) %>
+            <% if question.boolean_answers.last.avatar_file_name %>
+              <%= image_tag question.boolean_answers.last.avatar.url(:medium) %>
             <% end %>
           <% else %>
 
@@ -52,10 +52,10 @@
 
         <% if question.integer %>
           <% if question.integer_answers.any? && question.integer_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.integer_answers[0].response %></p>
+            <p>Answer: <%= question.integer_answers.last.response %></p>
             
-            <% if question.integer_answers[0].avatar_file_name %>
-              <%= image_tag question.integer_answers[0].avatar.url(:medium) %>
+            <% if question.integer_answers.last.avatar_file_name %>
+              <%= image_tag question.integer_answers.last.avatar.url(:medium) %>
             <% end %>
           
           <% else %>

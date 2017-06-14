@@ -10,5 +10,10 @@ class TextAnswer < ApplicationRecord
   geocoded_by :ip_address
   after_validation :geocode
 
+  scope :last_seven_days, -> { where(created_at: (Time.now - 7.day)..Time.now)}
+  scope :last_fourteen_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
+  scope :last_twentyone_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
+  scope :last_twentyeight_days, -> (num) { where(created_at: (Time.now - num.day)..Time.now)}
+
 
 end
