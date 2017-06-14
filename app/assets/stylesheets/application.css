@@ -54,9 +54,8 @@ html{
   height: 1em;
   width: 3em;
   text-align: center;
-  margin: auto;
-  font-size:7em;
   color: #f3f2f2;
+
 }
 
 .logs{
@@ -72,6 +71,7 @@ html{
   padding-right:10px;
   font-size:120%;
   padding-bottom:1em;
+
 }
 .logs a {
   font-family: Raleway, Arial;
@@ -100,3 +100,12 @@ html{
   text-align:center;
 }
 
+.shadow {
+  text-shadow:
+    0px 0px 0 #000,
+     
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+}

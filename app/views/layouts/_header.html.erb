@@ -1,5 +1,5 @@
-<h1 class="nav-title">habits</h1>
-  <div class="logs">
+<h3 class="nav-title">habits</h3>
+  <div class="logs shadow">
   <% if logged_in? %>
     <p><%= link_to "Logout", session_path(current_user), :method => :delete %></p>
     <p><%= link_to "Settings", edit_user_path(current_user) %></p>

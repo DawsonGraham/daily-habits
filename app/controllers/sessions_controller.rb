@@ -6,8 +6,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email])
-    if @user && @user.authenticate(params[:session][:password])
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
       login(@user)
       respond_to do |format|
         format.html { redirect_to user_questions_path(@user) }

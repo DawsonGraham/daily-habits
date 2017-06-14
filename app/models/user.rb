@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :email, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true
   has_secure_password
-  has_secure_token
+  # has_secure_token
 
   # def User.new_token
   #   SecureRandom.urlsafe_base64
