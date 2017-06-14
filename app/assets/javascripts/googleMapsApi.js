@@ -1,39 +1,25 @@
-var map, infoWindow;
-      function initMap() {
-  
+function initMap() {
   var answer1 = {
     info: '<strong>Answered on July 12th, 2017</strong>',
-    lat: 37.7749,
+    lat: 37.7749, 
     long: -122.4194
   };
 
-  var answer2 = {
-    info: '<strong>Answered on July 13th, 2017</strong>',
-    lat: 37.6,
-    long: -122
-  };
+  var length = (gon.answers).length
 
-  var answer3 = {
-    info: '<strong>Answered on July 12th, 2017</strong>',
-    lat: 37.69,
-    long: -122.42
-  };
-  
-  var answer4 = {
-  info: '<strong>Answered on July 12th, 2017</strong>',
-  lat: 37.75,
-  long: -122.4
-  };
+  var locations = [];
 
-  var locations = [
-      [answer1.info, answer1.lat, answer1.long, 0],
-      [answer2.info, answer2.lat, answer2.long, 1],
-      [answer3.info, answer3.lat, answer3.long, 2],
-      [answer4.info, answer4.lat, answer4.long, 3]
-    ];
+  for (i = 0; i < length; i++) {
+    var answer_arr = []
+    answer_arr.push("<strong>Answered on July 12th, 2017</strong>");
+    answer_arr.push(gon.answers[i].latitude)
+    answer_arr.push(gon.answers[i].longitude)
+    answer_arr.push(i)
+    locations.push(answer_arr)
+  }
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
+    zoom: 5,
     center: new google.maps.LatLng(37.7749, -122.4194),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });

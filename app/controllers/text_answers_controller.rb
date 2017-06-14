@@ -15,6 +15,7 @@ class TextAnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @text_answer = TextAnswer.new(text_answer_params)
     @text_answer.question_id = @question.id
+    # NEED TO REPLACE FAKE_IP WITH request.remote_ip
     @text_answer.ip_address = fake_ip
     if @text_answer.save
       redirect_to user_questions_path(@user)
@@ -24,6 +25,7 @@ class TextAnswersController < ApplicationController
     end 
   end
 
+  # time to response
 
   private
     def text_answer_params
@@ -35,6 +37,6 @@ class TextAnswersController < ApplicationController
     end
 
     def fake_ip
-      "#{random_num}73.46.64.17#{random_num}"
+      "134.201.250.155"
     end
 end
