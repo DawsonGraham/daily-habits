@@ -34,7 +34,7 @@ class IntegerAnswersController < ApplicationController
     end
 
     def fake_ip
-      "136.0.16.21#{random_num}"
+      "173.162.61.13"
     end
 
 end
