@@ -54,23 +54,24 @@ html{
   height: 1em;
   width: 3em;
   text-align: center;
-  margin: auto;
-  font-size:7em;
   color: #f3f2f2;
+
 }
 
 .logs{
   width:12em;
-  float: right;
+  float: left;
   /*margin:-55px 30px 0px 0px;*/
   text-align:center;
 }
 .logs p {
   font-family: Raleway, Arial;
   color:white;
-  display: inline-block;
+  /*display: inline-block;*/
   padding-right:10px;
   font-size:120%;
+  padding-bottom:1em;
+
 }
 .logs a {
   font-family: Raleway, Arial;
@@ -97,4 +98,14 @@ html{
   height: 3em;
   margin:auto;
   text-align:center;
+}
+
+.shadow {
+  text-shadow:
+    0px 0px 0 #000,
+     
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
 }

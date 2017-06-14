@@ -29,7 +29,7 @@ class TextAnswersController < ApplicationController
 
   private
     def text_answer_params
-      params.require(:text_answer).permit(:response, :question_id)
+      params.require(:text_answer).permit(:response, :question_id, :avatar)
     end
 
     def random_num
