@@ -14,8 +14,60 @@
  *= require_self
  */
 html{
+  /*background-color: black*/
   background-image: url("https://unsplash.it/1600/1000/?image=1073");
 }
+
+body {
+  margin:0;
+}
+header{
+  margin:0px;
+  display: inline-block;
+}
+
+.fa-bars{
+  margin-left:2em;
+  display: inline-block;
+}
+
+.fa-user-o{
+  float: right;
+  color:white;
+  margin-top:1em;
+  display: inline-block;
+}
+
+.logout {
+  float: right;
+  display: inline-block;
+  margin:30px 10px;
+}
+
+.logout a{
+  text-decoration: none;
+  color:white;
+  font-size: 120%;
+}
+
+.user-name{
+  float: right;
+  display: inline-block;
+  margin:30px 10px;
+  color:white;
+  font-size: 120%;
+}
+
+.nav-title{
+  height: 1em;
+  width: 3em;
+  text-align: center;
+  color: #f3f2f2;
+  font-size: 150%;
+  display: inline-block;
+  margin-left:0.3em;
+}
+
 
 #map {
   height: 40%;
@@ -29,7 +81,6 @@ html{
   background-color: white;
   margin:auto;
   border-radius:0.2em;
-  opacity: 0.95
 }
 
 .transparent {
@@ -50,19 +101,13 @@ html{
   color: #f3f2f2;
 }
 
-.nav-title{
-  height: 1em;
-  width: 3em;
-  text-align: center;
-  color: #f3f2f2;
-
-}
 
 .logs{
   width:12em;
   float: left;
   /*margin:-55px 30px 0px 0px;*/
   text-align:center;
+  /*display:none;*/
 }
 .logs p {
   font-family: Raleway, Arial;
@@ -101,11 +146,12 @@ html{
 }
 
 .shadow {
-  text-shadow:
+  text-shadow: 1px 1px 1px #000;
+/*  text-shadow:
     0px 0px 0 #000,
      
    -1px -1px 0 #000,  
     1px -1px 0 #000,
    -1px  1px 0 #000,
-    1px  1px 0 #000;
+    1px  1px 0 #000;*/
 }
