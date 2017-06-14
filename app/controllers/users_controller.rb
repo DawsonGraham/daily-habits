@@ -40,13 +40,13 @@ class UsersController < ApplicationController
     @questions = @user.questions
 
     gon.answers = []
-    @user.text_answers.each do |txt|
+    @user.text_answers.last_seven_days.each do |txt|
       gon.answers << txt 
     end
-    @user.boolean_answers.each do |bool|
+    @user.boolean_answers.last_seven_days.each do |bool|
       gon.answers << bool 
     end
-    @user.integer_answers.each do |int|
+    @user.integer_answers.last_seven_days.each do |int|
       gon.answers << int
     end
     
