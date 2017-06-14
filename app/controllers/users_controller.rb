@@ -2,8 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @disable_nav = true
-    p "*" * 100
-    p request.remote_ip
+    # request.remote_ip
   end
 
   def new
@@ -29,7 +28,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @questions = Question.where(user_id: @user.id)
+    @questions = @user.questions
+    gon.answers = []
+    @user.text_answers.each do |txt|
+      gon.answers << txt 
+    end
+    @user.boolean_answers.each do |bool|
+      gon.answers << bool 
+    end
+    @user.integer_answers.each do |int|
+      gon.answers << int
+    end
+    p gon.answers
   end 
 
   private

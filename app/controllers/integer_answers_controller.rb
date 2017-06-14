@@ -13,6 +13,7 @@ class IntegerAnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @integer_answer = IntegerAnswer.new(integer_answer_params)
     @integer_answer.question_id = @question.id
+    # NEED TO REPLACE FAKE_IP WITH request.remote_ip
     @integer_answer.ip_address = fake_ip
     if @integer_answer.save
       redirect_to user_questions_path(@user)
@@ -33,7 +34,7 @@ class IntegerAnswersController < ApplicationController
     end
 
     def fake_ip
-      "#{random_num}73.46.64.17#{random_num}"
+      "136.0.16.21#{random_num}"
     end
 
 end

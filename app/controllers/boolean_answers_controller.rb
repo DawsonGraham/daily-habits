@@ -13,6 +13,7 @@ class BooleanAnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @boolean_answer = BooleanAnswer.new(boolean_answer_params)
     @boolean_answer.question_id = @question.id
+    # NEED TO REPLACE FAKE_IP WITH request.remote_ip
     @boolean_answer.ip_address = fake_ip
       if @boolean_answer.save
         redirect_to user_questions_path(@user)
@@ -33,6 +34,6 @@ class BooleanAnswersController < ApplicationController
     end
 
     def fake_ip
-      "#{random_num}73.46.64.17#{random_num}"
+      "136.0.16.21#{random_num}"
     end
 end

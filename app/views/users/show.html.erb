@@ -1,5 +1,7 @@
 <div class="body-wrapper">
   <h1>Stats</h1>
+   <div id="map">
+    </div>
   <% @questions.each do |question| %>
     <p><%= question.title %> <br>
     
@@ -9,10 +11,10 @@
     
     <% if question.boolean %>
       completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
-    <% end %>
-
-    </p>
-
-      
+    <% end %>  
+    </p>   
   <% end %>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClRlqdx0umR1_F6izXYYFExsl5eYUG4p8&callback=initMap">
+    </script>
 <div>
