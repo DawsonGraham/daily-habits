@@ -4,12 +4,12 @@
     <%= form_tag sessions_path do %>
       <p>
         <div class="log-label"><%= label_tag :email %></div> <br>
-        <div class="log-form"><%= text_field_tag :email, params[:email], placeholder: ' tom33@gmail.com', required: true, autofocus: true %></div>
+        <div class="log-form"><%= text_field_tag :email, params[:email], placeholder: 'tom33@gmail.com', required: true, autofocus: true %></div>
       </p>
       
       <p>
         <div class="log-label"><%= label_tag :password %></div> <br>
-        <div class="log-form"><%= password_field_tag :password, params[:password],  placeholder:'password', required: true %></div>
+        <div class="log-form"><%= password_field_tag :password, params[:password], placeholder:'password', required: true %></div>
       </p>
   
     
