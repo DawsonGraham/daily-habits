@@ -6,12 +6,16 @@
     <p><%= question.title %> <br>
     
     <% if question.integer %>
-      average rating: <%= question.average_rating %><br>
+      - average rating: <%= question.average_rating.to_s[0..3] %><br>
     <% end %>
     
     <% if question.boolean %>
-      completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
-    <% end %>  
+      - completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
+    <% end %>
+
+    <% if question.text %>
+      - NEED A TEXT STAT HERE SINCE THE TEXT QUESTIONS WILL STILL SHOW UP
+    <% end %>
     </p>   
   <% end %>
     <script async defer
