@@ -36,6 +36,11 @@ gem 'gon'
 gem 'faker'
 gem 'geocoder'
 
+gem 'pry-rails'
+
+gem 'active_model_serializers', '~> 0.10.0'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

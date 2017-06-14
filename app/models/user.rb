@@ -14,11 +14,11 @@ class User < ApplicationRecord
   validates :email, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true
   has_secure_password
+  has_secure_token
 
   # def User.new_token
   #   SecureRandom.urlsafe_base64
   # end
-
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -32,10 +32,10 @@ class User < ApplicationRecord
     self.questions.count
   end
 
-  private
-    # def generate_access_token
-    #   begin
-    #     self.access_token = User.new_token
-    #   end while self.class.exists?(access_token: access_token)
-    # end
+  # private
+  #   def generate_access_token
+  #     begin
+  #       self.access_token = User.new_token
+  #     end while self.class.exists?(access_token: access_token)
+  #   end
 end

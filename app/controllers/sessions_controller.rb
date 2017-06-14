@@ -1,14 +1,20 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def new
     @disable_nav = true
   end
 
   def create
-    @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(email: params[:session][:email])
+    if @user && @user.authenticate(params[:session][:password])
       login(@user)
-      redirect_to user_questions_path(@user)
+      respond_to do |format|
+        format.html { redirect_to user_questions_path(@user) }
+        format.json { render json: @user }
+        # format.json { render json: { id: @user.id } }
+      end
+      
     else
       @disable_nav = true
       @errors = ["Incorrect email or password"]
