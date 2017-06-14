@@ -50,6 +50,21 @@ class MessagesController < ApplicationController
           body: "Your entry has been logged! " + responder
         )
 
+    elsif message_body.downcase == "weather"
+      boot_twilio
+      key = ENV['WEATHER_KEY']
+
+      response = HTTParty.get("http://api.wunderground.com/api/#{key}/geolookup/conditions/q/#{params["FromZip"]}.json")
+      
+      weather = response['current_observation']['weather']
+      temp = response['current_observation']['temp_f']
+      wind = response['current_observation']['wind_mph']
+
+      sms = @client.messages.create(
+          from: ENV['TWILIO_NUMBER'],
+          to: @from_number,
+          body: "The weather is #{weather}. The temp is #{temp}℉ with #{wind}mph winds"
+        )
     else    
       boot_twilio
       sms = @client.messages.create(
@@ -57,8 +72,8 @@ class MessagesController < ApplicationController
           to: @from_number,
           body: "Incorrect keyword, try these:
 - 'Habits' to bring up your remaining questions to answer today
-- 'question #)' followed by your answer types to log and complete the question for today"
-# - 'Show answers' to see the questions you've answered today
+- 'Question #)' followed by your answer types to log and complete the question for today
+- 'Weather' to see the questions you've answered today"
           )
     end  
   end

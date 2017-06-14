@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'gon'
 gem 'faker'
 gem 'geocoder'
+gem 'httparty'
 
 
 gem 'active_model_serializers', '~> 0.10.0'
