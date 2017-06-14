@@ -48,8 +48,6 @@ class UsersController < ApplicationController
     @user.text_answers.last_seven_days.each do |txt|
       gon.answers << txt 
     end
-    p gon.answers 
-    p '*' * 50
     
     respond_to do |format|
       format.html { }
