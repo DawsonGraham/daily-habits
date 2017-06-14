@@ -12,11 +12,20 @@ function initMap() {
     );
   };
 
+  var questionMatch = function(question_id) { 
+    var filtered = gon.questions.filter(function(question){
+      return question.id === question_id;
+    })
+    return filtered[0];
+  }
+
 
   for (i = 0; i < length; i++) {
     var answer_arr = []
-    answer_arr.push("<strong>Answered {answer} on {created_at}</strong>".supplant({
-        answer: gon.answers[i].response, created_at: 
+    console.log(gon.answers)
+    var q = questionMatch(gon.answers[i].question_id);
+    answer_arr.push("<strong>You answered '{answer}' to {question} on {created_at}!</strong>".supplant({
+        answer: gon.answers[i].response.toString(), created_at: gon.answers[i].created_at.substr(5, 5), question: "'" + q.title + "'"
       })
     );
     answer_arr.push(gon.answers[i].latitude)
@@ -26,7 +35,7 @@ function initMap() {
   }
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 5,
+    zoom: 9,
     center: new google.maps.LatLng(37.7749, -122.4194),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
