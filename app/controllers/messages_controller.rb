@@ -108,8 +108,4 @@ class MessagesController < ApplicationController
   def boot_twilio
     @client = Twilio::REST::Client.new ENV['TWILIO_SID'], ENV['TWILIO_AUTH_TOKEN']
   end
-
-  def city_converter
-
-  end
 end
