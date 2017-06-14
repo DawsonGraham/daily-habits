@@ -2,7 +2,7 @@ module TwilioHelper
 
   def responder
     @from_number = params["From"]
-    user = User.find_by(phone_number: @from_number[1..-1])
+    user = User.find_by(phone_number: @from_number[2..-1])
     questions = user.questions
     if questions_today.empty?
       response = "You've answered all your daily questions, nice job!"
@@ -13,7 +13,7 @@ module TwilioHelper
   end
 
   def questions_today
-    user = User.find_by(phone_number: @from_number[1..-1])
+    user = User.find_by(phone_number: @from_number[2..-1])
     questions = user.questions
     show = []
     questions.each do |question|
@@ -94,25 +94,28 @@ module TwilioHelper
   end
 
   def single_answer_helper
+    geocode = Geocoder.coordinates("#{params["FromCity"]}, #{params["FromState"]}, #{params["FromZip"]}")
     message_body = params["Body"]
     @from_number = params["From"]
-    user = User.find_by(phone_number: @from_number[1..-1])
+    user = User.find_by(phone_number: @from_number[2..-1])
     split_message = message_body.split(")")
+    split_message[1] = split_message[1][1..-1]
     question = Question.find(split_message[0].to_i)
 
     if split_message[1].downcase == "yes" || split_message[1].downcase == "ya" || split_message[1].downcase == "y" || split_message[1].downcase == "n" || split_message[1].downcase == "no"
-       split_message[1].downcase == "yes" || split_message[1].downcase == "ya" || split_message[1].downcase == "y" ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)    
-    elsif split_message[1].to_i > 0
-      question.integer_answers.create(response: split_message[1].to_i)
+       split_message[1].downcase == "yes" || split_message[1].downcase == "ya" || split_message[1].downcase == "y" ? question.boolean_answers.create(response: true, latitude: geocode[0], longitude: geocode[1]) : question.boolean_answers.create(response: false, latitude: geocode[0], longitude: geocode[1])    
+    elsif split_message[1].to_i > 0 
+      question.integer_answers.create(response: split_message[1].to_i, latitude: geocode[0], longitude: geocode[1])
     else
-      question.text_answers.create(response: split_message[1])
+      question.text_answers.create(response: split_message[1], latitude: geocode[0], longitude: geocode[1])
     end
   end
 
   def double_answer_helper
+    geocode = Geocoder.coordinates("#{params["FromCity"]}, #{params["FromState"]}, #{params["FromZip"]}")
     message_body = params["Body"]
     @from_number = params["From"]
-    user = User.find_by(phone_number: @from_number[1..-1])
+    user = User.find_by(phone_number: @from_number[2..-1])
     split_message = message_body.split(")")
     split_message[1] = split_message[1][1..-1]
     question = Question.find(split_message[0].to_i)
@@ -120,23 +123,24 @@ module TwilioHelper
     double_split[1] = double_split[1][1..-1]
       
     if (double_split[0].downcase == "y" || double_split[0].downcase == "yes" || double_split[0].downcase == "n" || double_split[0].downcase == "no") && double_split[1].to_i > 0
-      double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y" ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)
-      question.integer_answers.create(response: double_split[1])
+      double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y" ? question.boolean_answers.create(response: true, latitude: geocode[0], longitude: geocode[1]) : question.boolean_answers.create(response: false, latitude: geocode[0], longitude: geocode[1])
+      question.integer_answers.create(response: double_split[1], latitude: geocode[0], longitude: geocode[1])
 
     elsif double_split[0].downcase == "y" || double_split[0].downcase == "n" && double_split[1].to_i == 0
-      double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y" ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)
-      question.text_answers.create(response: double_split[1])
+      double_split[0].downcase == "yes" || double_split[0].downcase == "ya" || double_split[0].downcase == "y" ? question.boolean_answers.create(response: true, latitude: geocode[0], longitude: geocode[1]) : question.boolean_answers.create(response: false, latitude: geocode[0], longitude: geocode[1])
+      question.text_answers.create(response: double_split[1], latitude: geocode[0], longitude: geocode[1])
 
     elsif double_split[0].to_i > 0 
-      question.integer_answers.create(response: double_split[0].to_i)
-      question.text_answers.create(response: double_split[1])
+      question.integer_answers.create(response: double_split[0].to_i, latitude: geocode[0], longitude: geocode[1])
+      question.text_answers.create(response: double_split[1], latitude: geocode[0], longitude: geocode[1])
     end
   end
 
   def triple_answer_helper
+    geocode = Geocoder.coordinates("#{params["FromCity"]}, #{params["FromState"]}, #{params["FromZip"]}")
     message_body = params["Body"]
     @from_number = params["From"]
-    user = User.find_by(phone_number: @from_number[1..-1])
+    user = User.find_by(phone_number: @from_number[2..-1])
     split_message = message_body.split(")")
     question = Question.find(split_message[0].to_i)
 
@@ -146,8 +150,8 @@ module TwilioHelper
     triple_split.unshift(double_split[0])
     triple_split[2] = triple_split[2][1..-1]
 
-    triple_split[0].downcase == 'y' || triple_split[0].downcase == 'yes' || triple_split[0].downcase == 'ya' ? question.boolean_answers.create(response: true) : question.boolean_answers.create(response: false)
-    question.integer_answers.create(response: triple_split[1])
-    question.text_answers.create(response: triple_split[2])
+    triple_split[0].downcase == 'y' || triple_split[0].downcase == 'yes' || triple_split[0].downcase == 'ya' ? question.boolean_answers.create(response: true, latitude: geocode[0], longitude: geocode[1]) : question.boolean_answers.create(response: false, latitude: geocode[0], longitude: geocode[1])
+    question.integer_answers.create(response: triple_split[1], latitude: geocode[0], longitude: geocode[1])
+    question.text_answers.create(response: triple_split[2], latitude: geocode[0], longitude: geocode[1])
   end
 end
