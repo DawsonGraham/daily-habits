@@ -55,16 +55,17 @@ html{
 
 .logs{
   width:12em;
-  float: right;
+  float: left;
   /*margin:-55px 30px 0px 0px;*/
   text-align:center;
 }
 .logs p {
   font-family: Raleway, Arial;
   color:white;
-  display: inline-block;
+  /*display: inline-block;*/
   padding-right:10px;
   font-size:120%;
+  padding-bottom:1em;
 }
 .logs a {
   font-family: Raleway, Arial;
