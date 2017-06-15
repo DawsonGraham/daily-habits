@@ -44,16 +44,18 @@
       </div><br>
       <div class="log-form">
         <%= f.password_field :password, placeholder: '  password', required: true,  autofocus: true   %>
-      </div>
+      </div> <br>
+      <div class="log-label shadow">
+        <%= f.label :picture %> 
+      </div><br>
       </p>
         <div class="image-button">
           <%= f.file_field :avatar %>
         </div>
-      <p>
+      
       <div class="log-button">
         <%= f.submit "Register" %>
       </div>
-      </p>
     
     <% end  %>
   
