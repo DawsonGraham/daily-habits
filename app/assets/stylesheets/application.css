@@ -1,0 +1,188 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+html{
+  /*background-color: black*/
+  background-image: url("https://unsplash.it/1600/1000/?image=1073");
+}
+
+body {
+  margin:0;
+  height: 100%;
+  font-family: Raleway;
+}
+.header{
+  margin:0px;
+  display: inline-block;
+  width:100%;
+  height:1em;
+  position: relative;
+}
+
+.fa-bars{
+  margin-left:0.5em;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.fa-user-o{
+  position: relative;
+  float: right;
+  color:white;
+  margin-top:1em;
+  bottom:0;
+}
+
+.header a:hover {
+  border-bottom:solid;
+  border-bottom-width: 1.5px;
+}
+
+.logout {
+  float: right;
+  display: inline-block;
+  margin:26px 10px;
+  margin-bottom: 0;
+}
+
+.logout a{
+  text-decoration: none;
+  color:white;
+  font-size: 130%;
+}
+
+.user-name{
+  float: right;
+  display: inline-block;
+  margin:26px 10px;
+  color:white;
+  font-size: 130%;
+}
+
+.user-name a{
+  text-decoration: none;
+  color:white;
+  font-weight: bold;
+
+}
+.nav-title{
+  height: 1em;
+  width: 3em;
+  text-align: center;
+  color: #f3f2f2;
+  font-size: 150%;
+  display: inline-block;
+  margin-left:0.3em;
+  position: relative; 
+  bottom:0;
+}
+
+
+#map {
+  height: 25em;
+  width: 35%;
+  float: right;
+  margin-right:1em;
+  margin-bottom: 2em;
+  border-radius: 1em;
+  box-shadow: 2px 2px 1px #888888;
+
+}
+
+.body-wrapper {
+  width:70%;
+  min-height:1000px;
+  background-color: white;
+  margin:auto;
+  border-radius:0.2em;
+  box-shadow: 1px 4px 1px #888888;
+}
+
+.transparent {
+  width:70%;
+  height:1000px;
+  background-color: none;
+  margin:auto;
+  border-radius:0.2em;
+  opacity: 0.95
+}
+
+.title {
+  height: 1.5em;
+  width: 3em;
+  text-align: center;
+  margin: 2em auto 0 auto;
+  font-size:9em;
+  color: #f3f2f2;
+}
+
+
+.logs{
+  width:12%;
+  float: left;
+  margin-left: 0.7em;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: none;
+}
+.logs p {
+  font-family: Raleway, Arial;
+  color:black;
+  height:2em;
+  margin:10px 0px 0px 0px;
+  padding-left:1em;
+  padding-bottom:0.5em;
+  border-radius:5px;
+}
+
+.logs p:hover{
+  background-color: #f2f2f2;
+}
+.logs a {
+  font-family: Raleway, Arial;
+  color:black;
+  text-decoration: none
+  margin-top:2em;
+
+}
+
+.home a{
+  font-family: Raleway, Arial;
+  float:left;
+  text-decoration: none;
+  color:white;
+  /*font-size:160%;*/
+  /*margin-top:-44px;*/
+  margin-left: 4.4em;
+}
+
+.error {
+  color:white;,
+  font-size: 10em;
+  width:20em;
+  height: 3em;
+  margin:auto;
+  text-align:center;
+}
+
+.shadow {
+  text-shadow: 1px 1px 1px #000;
+}
+
+.shadow-dark {
+  text-shadow: 1.7px 1.7px 1.7px #000;
+}
+

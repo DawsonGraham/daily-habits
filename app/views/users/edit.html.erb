@@ -1,0 +1,49 @@
+<div class="body-wrapper">
+  <% if @user.avatar_file_name %>
+    <%= image_tag @user.avatar.url(:medium) %>
+  <% end %>
+   <h1 class="page-title">Settings</h1>
+   <% @questions.each do |question| %>
+   <div class="question_edit_box">
+      <p class="question-title"><%= question.title %></p>
+      <p class='trash'><%= link_to "🗑", user_question_path(@user, question), method: :delete %></p>
+
+    </div>
+   <% end %>
+
+  
+    <h2 class="page-title">Add a Question</h2>
+
+    <div class="question_form">
+    <%= form_for ([@user, @user.questions.build]) do |f| %>
+    <p>
+      
+      <%= f.text_area :title, size:"40x2", placeholder: "How was your afternoon?"  %>
+    </p>
+
+    <b>Answer Types:</b>
+    <div class="box"> 
+      <i class="fa fa-star red "></i>
+      <%= f.label :rating %>
+      <%= f.check_box :integer, {}, true, false  %>
+    </div>
+  
+    <div class="box">
+      <i class="fa fa-check-square-o red"></i>
+      <%= f.label :completion %>
+      <%= f.check_box :boolean, {}, true, false %>
+    </div>
+  
+    <div class="box">
+      <i class="fa fa-pencil "></i>
+      <%= f.label :summary %>
+      <%= f.check_box :text, {}, true, false %>
+    </div>
+  
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  
+    <%= f.submit "submit" %>
+    <% end %>
+
+  </div>
+</div>

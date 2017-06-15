@@ -1,0 +1,37 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login_form{
+  text-align:center;
+  margin-top:10em;
+
+}
+
+.log-label{
+  font-size: 140%;
+  color: white;
+}
+
+.log-form input {
+  width:30%;
+  height:3em;
+  margin: auto;
+  font-size: 102%;
+  text-align: center;
+  border-radius:1em;
+  outline: none;
+  border:none
+}
+
+.log-button input {
+  width:9em;
+  height:3em;
+  margin: auto;
+  background-color:#ff3333;
+  color:white;
+  border-radius:1em;
+  font-size: 110%;
+  border:none
+}
+

@@ -1,0 +1,27 @@
+<div class="question_form">
+  <%= form_for @question do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :integer_answer %>
+    <%= f.check_box :integer_answer %>
+  </p>
+
+  <p>
+    <%= f.label :boolean_answer %>
+    <%= f.check_box :boolean_answer %>
+  </p>
+
+  <p>
+    <%= f.label :text_answer %>
+    <%= f.check_box :text_answer %>
+  </p>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <%= f.submit "submit" %>
+  <% end %>
+</div>
