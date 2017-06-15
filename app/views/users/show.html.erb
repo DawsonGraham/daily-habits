@@ -1,24 +1,65 @@
 <div class="body-wrapper">
-  <h1>Stats</h1>
-   <div id="map">
-    </div>
-  <% @questions.each do |question| %>
-    <p><%= question.title %> <br>
+  <h1 class="stats-title">Weekly Stats</h1>
+   <div id="map"></div>
     
-    <% if question.integer %>
-      - average rating: <%= question.average_rating.to_s[0..3] %><br>
-    <% end %>
-    
-    <% if question.boolean %>
-      - completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
+  <div class="question-stat">
+    <% @questions.each do |question| %>
+      <p class="question-title"><%= question.title %></p> <br>
+      
+      <% if question.integer && question.integer_answers.last_seven_days.any? %>
+        <div class="all-stars">
+
+          <% question.average_rating.times do %>
+            <div class="stars">
+              <i class="fa fa-star red"></i>
+            </div>
+          <% end  %>
+
+          <% (5 - question.average_rating).times do%>
+            <div class="stars">
+              <i class="fa fa-star grey"></i>
+            </div>
+          <% end  %>
+
+        </div>
+      <% end %>
+
+      <% if question.boolean && question.boolean_answers.last_seven_days.any? %>
+        <div class="all-checks">
+          <% day_check(question).reverse.each do |day| %>
+            <% if day.values[0] == true %>
+              <div class="checks">
+                <p><%= day.keys[0] %></p>
+                <i class="fa fa-check-square-o red "></i>            
+              </div>
+            <% else %>
+            <div class="checks">
+            <p><%= day.keys[0] %></p>
+              <i class="fa fa-square-o "></i> 
+            </div>
+            <% end  %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
 
-    <% if question.text %>
-      - NEED A TEXT STAT HERE SINCE THE TEXT QUESTIONS WILL STILL SHOW UP
-    <% end %>
-    </p>   
-  <% end %>
+    <!-- <div class="caro-wrapper">
+      <div class="shape">
+        <div class="plane p1"></div>
+        <div class="plane p2"></div> 
+        <div class="plane p3"></div>
+        <div class="plane p4"></div>
+        <div class="plane p5"></div>
+        <div class="plane p6"></div> 
+        <div class="plane p7"></div>
+        <div class="plane p8"></div>
+      </div>
+    </div> -->
+
+  </div>
+
+
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClRlqdx0umR1_F6izXYYFExsl5eYUG4p8&callback=initMap">
     </script>
-<div>
+</div>

@@ -88,17 +88,22 @@ body {
 
 
 #map {
-  height: 40%;
-  width: 40%;
+  height: 25em;
+  width: 35%;
   float: right;
+  margin-right:1em;
+  border-radius: 1em;
+  box-shadow: 2px 2px 1px #888888;
+
 }
 
 .body-wrapper {
   width:70%;
-  height:1000px;
+  min-height:1000px;
   background-color: white;
   margin:auto;
   border-radius:0.2em;
+  box-shadow: 1px 4px 1px #888888;
 }
 
 .transparent {
@@ -126,6 +131,7 @@ body {
   margin-left: 0.7em;
   background-color: white;
   border-radius: 5px;
+  margin-top: 10px;
   /*display: none;*/
 }
 .logs p {
