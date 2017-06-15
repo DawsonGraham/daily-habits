@@ -44,6 +44,18 @@
         </div>
       <% end %>
 
+      <% if question.text && question.text_answers.last_seven_days.any? %>
+        <div class="all-texts">
+          <% day_check_text(question).each do |day| %>        
+            <% if day.values[0] %>
+              <div class="single-text">
+                <p><%= day.keys[0] %> - <%= day.values[0] %></p>
+              </div>
+            <% end %>
+          <% end  %>
+        </div>
+      <% end  %>
+
     <% end %>
 
     <!-- <div class="caro-wrapper">
