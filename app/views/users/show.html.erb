@@ -6,21 +6,16 @@
     <p><%= question.title %> <br>
     
     <% if question.integer && question.integer_answers.last_seven_days.any? %>
-      - average rating: <%= question.average_rating.to_s[0..3] %><br>
-    <% else %>
-      - No ratings for this question yet!
-    <% end %>
+      average rating: <%= question.average_rating.to_s[0..3] %><br>
     
-    <% if question.boolean && question.boolean_answers.last_seven_days.any? %>
-      - completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
-    <% else %>
-      - No answers for this question yet!
-    <% end %>
+    <% elsif question.boolean && question.boolean_answers.last_seven_days.any? %>
+      completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br> 
 
-    <% if question.text && question.text_answers.last_seven_days.any? %>
-      - NEED A TEXT STAT HERE SINCE THE TEXT QUESTIONS WILL STILL SHOW UP
-    <% else %>
-      - No answers for this question yet!
+    <% elsif question.text && question.text_answers.last_seven_days.any? %>
+      <%= question.created_time %> <br>
+      Answer characters: <%= question.answer_characters %> <br>
+      Words used: <%= question.word_count%>
+  
     <% end %>
     </p>   
   <% end %>
