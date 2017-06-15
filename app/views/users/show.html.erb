@@ -1,5 +1,5 @@
 <div class="body-wrapper">
-  <h1 class="stats-title">Weekly Stats</h1>
+  <h1 class="page-title">Weekly Stats</h1>
    <div id="map"></div>
     
 
@@ -8,6 +8,7 @@
       <p class="question-title"><%= question.title %></p> <br>
       
       <% if question.integer && question.integer_answers.last_seven_days.any? %>
+      <p class="average-tag">Average Rating:</p>
         <div class="all-stars">
 
           <% question.average_rating.times do %>
