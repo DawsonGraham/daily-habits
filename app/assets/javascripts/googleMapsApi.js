@@ -1,17 +1,33 @@
 function initMap() {
-  var answer1 = {
-    info: '<strong>Answered on July 12th, 2017</strong>',
-    lat: 37.7749, 
-    long: -122.4194
-  };
 
   var length = (gon.answers).length
-
   var locations = [];
+
+  String.prototype.supplant = function (o) {
+    return this.replace(/{([^{}]*)}/g,
+      function (a, b) {
+          var r = o[b];
+          return typeof r === 'string' || typeof r === 'number' ? r : a;
+      }
+    );
+  };
+
+  var questionMatch = function(question_id) { 
+    var filtered = gon.questions.filter(function(question){
+      return question.id === question_id;
+    })
+    return filtered[0];
+  }
+
 
   for (i = 0; i < length; i++) {
     var answer_arr = []
-    answer_arr.push("<strong>Answered on July 12th, 2017</strong>");
+    console.log(gon.answers)
+    var q = questionMatch(gon.answers[i].question_id);
+    answer_arr.push("<strong>You answered '{answer}' to {question} on {created_at}!</strong>".supplant({
+        answer: gon.answers[i].response.toString(), created_at: gon.answers[i].created_at.substr(5, 5), question: "'" + q.title + "'"
+      })
+    );
     answer_arr.push(gon.answers[i].latitude)
     answer_arr.push(gon.answers[i].longitude)
     answer_arr.push(i)
@@ -19,7 +35,7 @@ function initMap() {
   }
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 5,
+    zoom: 9,
     center: new google.maps.LatLng(37.7749, -122.4194),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });

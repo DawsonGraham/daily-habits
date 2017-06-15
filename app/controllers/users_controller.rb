@@ -11,9 +11,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    p "*" * 90
-    p params
-    p "*" * 90
     @user = User.new(user_params)
     if @user.save
       login(@user)
@@ -39,15 +36,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @questions = @user.questions
 
+    gon.questions = @questions
     gon.answers = []
-    @user.text_answers.each do |txt|
-      gon.answers << txt 
-    end
-    @user.boolean_answers.each do |bool|
+
+    @user.boolean_answers.last_seven_days.each do |bool|
       gon.answers << bool 
     end
-    @user.integer_answers.each do |int|
+    @user.integer_answers.last_seven_days.each do |int|
       gon.answers << int
+    end
+    @user.text_answers.last_seven_days.each do |txt|
+      gon.answers << txt 
     end
     
     respond_to do |format|

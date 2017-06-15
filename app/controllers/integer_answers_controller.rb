@@ -26,7 +26,7 @@ class IntegerAnswersController < ApplicationController
 
   private
     def integer_answer_params
-      params.require(:integer_answer).permit(:response, :question_id)
+      params.require(:integer_answer).permit(:response, :question_id, :avatar)
     end
 
     def random_num
@@ -34,7 +34,7 @@ class IntegerAnswersController < ApplicationController
     end
 
     def fake_ip
-      "136.0.16.21#{random_num}"
+      "173.162.61.13"
     end
 
 end

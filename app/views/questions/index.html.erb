@@ -1,13 +1,18 @@
 <div class="body-wrapper">
   
-  <h1 class="user_name"><%= @user.full_name %></h1>
+  <h1 class="user_name">Today's Questions</h1>
     <% @questions.each do |question| %>
       <div class="question-wrapper">
         <p>Question: <%= question.title %></p>
 
         <% if question.text %>
           <% if question.text_answers.any? && question.text_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.text_answers[0].response %></p>
+            <p>Answer: <%= question.text_answers.last.response %></p>
+
+            <% if question.text_answers.last.avatar_file_name %>
+              <%= image_tag question.text_answers.last.avatar.url(:medium) %>
+            <% end %>
+
           <% else %>
            <%= form_for([@user, question, question.text_answers.build]) do |f|%>
                 <p>
@@ -16,13 +21,20 @@
                 </p>
                 <%= hidden_field :question_id, value: question.id %>
                 <%= f.submit 'submit' %>
+              <% if !question.boolean && !question.integer %>
+                <%= f.file_field :avatar %>
+              <% end %>
               <% end  %>
           <% end %>
         <% end %>
         
         <% if question.boolean %>
           <% if question.boolean_answers.any? && question.boolean_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.boolean_answers[0].response %></p>
+            <p>Answer: <%= question.boolean_answers.last.response %></p>
+
+            <% if question.boolean_answers.last.avatar_file_name %>
+              <%= image_tag question.boolean_answers.last.avatar.url(:medium) %>
+            <% end %>
           <% else %>
 
             <%= form_for([@user, question, question.boolean_answers.build]) do |f|%>
@@ -40,11 +52,17 @@
 
         <% if question.integer %>
           <% if question.integer_answers.any? && question.integer_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.integer_answers[0].response %></p>
+            <p>Answer: <%= question.integer_answers.last.response %></p>
+            
+            <% if question.integer_answers.last.avatar_file_name %>
+              <%= image_tag question.integer_answers.last.avatar.url(:medium) %>
+            <% end %>
+          
           <% else %>
             <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
               <%= f.select :response, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]) %>
             <%= f.submit 'submit' %>
+            <%= f.file_field :avatar %>
             <% end %>
           <% end %>
         <% end %>

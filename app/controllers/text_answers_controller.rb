@@ -29,7 +29,7 @@ class TextAnswersController < ApplicationController
 
   private
     def text_answer_params
-      params.require(:text_answer).permit(:response, :question_id)
+      params.require(:text_answer).permit(:response, :question_id, :avatar)
     end
 
     def random_num
@@ -37,6 +37,6 @@ class TextAnswersController < ApplicationController
     end
 
     def fake_ip
-      "134.201.250.155"
+      "134.201.250.15#{random_num}"
     end
 end

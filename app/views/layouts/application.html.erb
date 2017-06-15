@@ -5,18 +5,22 @@
     <%= include_gon %>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway' %>
+    <%= stylesheet_link_tag 'application', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= javascript_include_tag "jquery", "application" %>
+
+
   </head>
 
   <body>
+  <%= render partial: '/layouts/header' unless @disable_nav %>
   <% if @errors %>
     <% @errors.each do |error| %>
       <p class="error"> <%= error %> </p>
     <% end %>
   <% end %>
-  <%= render partial: '/layouts/header' unless @disable_nav %>
     <%= yield %>
   </body>
 </html>

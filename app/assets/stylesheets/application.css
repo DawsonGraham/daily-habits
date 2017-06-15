@@ -14,22 +14,96 @@
  *= require_self
  */
 html{
+  /*background-color: black*/
   background-image: url("https://unsplash.it/1600/1000/?image=1073");
 }
 
-#map {
-  height: 40%;
-  width: 40%;
+body {
+  margin:0;
+  height: 100%;
+  font-family: Raleway;
+}
+.header{
+  margin:0px;
+  display: inline-block;
+  width:100%;
+  height:1em;
+  position: relative;
+}
+
+.fa-bars{
+  margin-left:0.5em;
+  display: inline-block;
+}
+
+.fa-user-o{
+  position: relative;
   float: right;
+  color:white;
+  margin-top:1em;
+  bottom:0;
+}
+
+.header a:hover {
+  border-bottom:solid;
+  border-bottom-width: 1.5px;
+}
+
+.logout {
+  float: right;
+  display: inline-block;
+  margin:30px 10px;
+  margin-bottom: 0;
+}
+
+.logout a{
+  text-decoration: none;
+  color:white;
+  font-size: 120%;
+}
+
+.user-name{
+  float: right;
+  display: inline-block;
+  margin:30px 10px;
+  color:white;
+  font-size: 120%;
+}
+
+.user-name a{
+  text-decoration: none;
+  color:white;
+}
+.nav-title{
+  height: 1em;
+  width: 3em;
+  text-align: center;
+  color: #f3f2f2;
+  font-size: 150%;
+  display: inline-block;
+  margin-left:0.3em;
+  position: relative; 
+  bottom:0;
+}
+
+
+#map {
+  height: 25em;
+  width: 35%;
+  float: right;
+  margin-right:1em;
+  border-radius: 1em;
+  box-shadow: 2px 2px 1px #888888;
+
 }
 
 .body-wrapper {
   width:70%;
-  height:1000px;
+  min-height:1000px;
   background-color: white;
   margin:auto;
   border-radius:0.2em;
-  opacity: 0.95
+  box-shadow: 1px 4px 1px #888888;
 }
 
 .transparent {
@@ -50,34 +124,35 @@ html{
   color: #f3f2f2;
 }
 
-.nav-title{
-  height: 1em;
-  width: 3em;
-  text-align: center;
-  margin: auto;
-  font-size:7em;
-  color: #f3f2f2;
-}
 
 .logs{
-  width:12em;
-  float: right;
-  /*margin:-55px 30px 0px 0px;*/
-  text-align:center;
+  width:12%;
+  float: left;
+  margin-left: 0.7em;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+  /*display: none;*/
 }
 .logs p {
   font-family: Raleway, Arial;
-  color:white;
-  display: inline-block;
-  padding-right:10px;
-  font-size:120%;
+  color:black;
+  height:2em;
+  margin:10px 0px 0px 0px;
+  padding-left:1em;
+  padding-bottom:0.5em;
+  border-radius:5px;
+}
+
+.logs p:hover{
+  background-color: #f2f2f2;
 }
 .logs a {
   font-family: Raleway, Arial;
-  color:white;
-  display: inline-block;
-  font-size:120%;
+  color:black;
   text-decoration: none
+  margin-top:2em;
+
 }
 
 .home a{
@@ -97,4 +172,15 @@ html{
   height: 3em;
   margin:auto;
   text-align:center;
+}
+
+.shadow {
+  text-shadow: 1px 1px 1px #000;
+/*  text-shadow:
+    0px 0px 0 #000,
+     
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;*/
 }

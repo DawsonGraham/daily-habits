@@ -34,6 +34,6 @@ class BooleanAnswersController < ApplicationController
     end
 
     def fake_ip
-      "136.0.16.21#{random_num}"
+      "173.166.164.121"
     end
 end
