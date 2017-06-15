@@ -7,7 +7,7 @@ def day_check(q)
   until n == 7
     check = []
     q.boolean_answers.each do |bool|
-      if bool.created_at.strftime('%Y%m%d').to_i == time_converter.strftime('%Y%m%d').to_i - n
+      if bool.created_at.strftime('%Y%m%d').to_i == time_converter.strftime('%Y%m%d').to_i - n && bool.response == true
         check << bool
       end
   end

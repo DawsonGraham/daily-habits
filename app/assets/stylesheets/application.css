@@ -34,6 +34,7 @@ body {
 .fa-bars{
   margin-left:0.5em;
   display: inline-block;
+  cursor: pointer;
 }
 
 .fa-user-o{
