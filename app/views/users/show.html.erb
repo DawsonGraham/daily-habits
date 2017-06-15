@@ -5,16 +5,22 @@
   <% @questions.each do |question| %>
     <p><%= question.title %> <br>
     
-    <% if question.integer %>
+    <% if question.integer && question.integer_answers.last_seven_days.any? %>
       - average rating: <%= question.average_rating.to_s[0..3] %><br>
+    <% else %>
+      - No ratings for this question yet!
     <% end %>
     
-    <% if question.boolean %>
+    <% if question.boolean && question.boolean_answers.last_seven_days.any? %>
       - completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
+    <% else %>
+      - No answers for this question yet!
     <% end %>
 
-    <% if question.text %>
+    <% if question.text && question.text_answers.last_seven_days.any? %>
       - NEED A TEXT STAT HERE SINCE THE TEXT QUESTIONS WILL STILL SHOW UP
+    <% else %>
+      - No answers for this question yet!
     <% end %>
     </p>   
   <% end %>
