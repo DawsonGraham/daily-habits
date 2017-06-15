@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'users/:user_id/questions/:id', :to => 'questions#destroy'
+
   resources :users, only: [:index, :new, :show, :create, :edit] do
     resources :questions, only: [:index, :show, :new, :create, :destroy, :edit] do
       resources :text_answers, only: [:show, :new, :create]
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
     end 
   end 
   resources :sessions, only: [:new, :create, :destroy]
+
+  get 'sessions/:id', :to => 'sessions#destroy'
   # resources :text_answers, only: [:show, :new, :create]
   # resources :boolean_answers, only: [:show, :new, :create]
   # resources :integer_answers, only: [:show, :new, :create]

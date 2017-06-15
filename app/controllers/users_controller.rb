@@ -39,14 +39,14 @@ class UsersController < ApplicationController
     gon.questions = @questions
     gon.answers = []
 
-    @user.boolean_answers.last_seven_days.each do |bool|
-      gon.answers << bool 
-    end
     @user.integer_answers.last_seven_days.each do |int|
       gon.answers << int
     end
     @user.text_answers.last_seven_days.each do |txt|
       gon.answers << txt 
+    end
+    @user.boolean_answers.last_seven_days.each do |bool|
+      gon.answers << bool 
     end
     
     respond_to do |format|

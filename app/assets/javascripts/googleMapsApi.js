@@ -24,7 +24,7 @@ function initMap() {
     var answer_arr = []
     console.log(gon.answers)
     var q = questionMatch(gon.answers[i].question_id);
-    answer_arr.push("<strong>You answered '{answer}' to {question} on {created_at}!</strong>".supplant({
+    answer_arr.push("You answered <strong>'{answer}'</strong> to <strong>{question}</strong> on <strong>{created_at}!</strong>".supplant({
         answer: gon.answers[i].response.toString(), created_at: gon.answers[i].created_at.substr(5, 5), question: "'" + q.title + "'"
       })
     );

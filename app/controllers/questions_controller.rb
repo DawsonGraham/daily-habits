@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  def method_name
+  def show
     
   end
 
