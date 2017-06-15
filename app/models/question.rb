@@ -11,7 +11,7 @@ class Question < ApplicationRecord
 
 
   def average_rating
-    self.integer_answers.reduce(0) {|sum, answer| sum + answer.response }.to_f / self.integer_answers.length
+    self.integer_answers.reduce(0) {|sum, answer| sum + answer.response }.to_i / self.integer_answers.length
   end
 
   def total_tasks_completed
