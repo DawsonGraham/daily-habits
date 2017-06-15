@@ -12,3 +12,126 @@
   color:white;
   font-size: 140%;*/
 }
+
+.question-title{
+  /*background-color: red;*/
+  font-size: 1.8em;
+  margin-left:0.5em;
+  border-bottom:solid;
+  border-bottom-width:1px;
+  width:16em;
+}
+
+.grey{
+  color: grey;
+}
+
+.red{
+  color: red
+}
+
+.stats-title{
+  margin-left: 0.5em;
+  margin-top:10px;
+  padding-top: 0.5em;
+}
+
+.stars {
+  display: inline-block;
+}
+
+
+.all-stars{
+  width:12em;
+  margin-left:2em;
+}
+
+
+.stars i{
+  font-size:30px;
+}
+
+.all-checks{
+  width:15em;
+  margin-left:2em;
+}
+
+.checks {
+  display: inline-block;
+}
+
+.checks i{
+  font-size: 30px;
+}
+
+
+
+@-webkit-keyframes spin {
+  from {-webkit-transform:rotateY(0); }
+  to {-webkit-transform:rotateY(-360deg);}
+}
+
+.caro-wrapper {
+margin:0px auto 0 auto;
+width:25em;
+height:20em;
+float: right;
+padding-bottom:10em;
+
+  -webkit-perspective:800;
+  -webkit-perspective-origin:50% 90px;
+  -webkit-transition: -webkit-perspective, 5s;
+}
+
+.shape {
+  margin:150px auto;
+  height:200px;
+  width:200px;
+  -webkit-transform-style: preserve-3d;
+  -webkit-animation: spin 15s infinite linear;
+  
+ }
+
+
+
+.plane {
+  position:absolute;
+  width:100px;
+  height:100px;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  font-size:10em;
+  text-align:center;
+}
+
+
+.p1 {
+  -webkit-transform: rotateY(360deg) translateZ(150px);
+}
+.p2 {
+-webkit-transform: rotateY(45deg) translateZ(150px);
+}
+
+.p3 {
+-webkit-transform: rotateY(90deg) translateZ(150px);
+}
+
+.p4 {
+-webkit-transform: rotateY(135deg) translateZ(150px);
+}
+
+.p5 {
+-webkit-transform: rotateY(180deg) translateZ(150px);
+}
+
+.p6 {
+-webkit-transform: rotateY(225deg) translateZ(150px);
+}
+
+.p7 {
+-webkit-transform: rotateY(270deg) translateZ(150px);
+}
+
+.p8 {
+-webkit-transform: rotateY(315deg) translateZ(150px);
+}

@@ -1,17 +1,18 @@
 <div class="header">
-  <i class="fa fa-bars shadow" style="font-size:1.5em;color:white;"></i>
+  <i onclick="myFunction()" class="fa fa-bars shadow" style="font-size:1.5em;color:white;"></i>
   <p class="nav-title shadow">habits</p>
-  <p class="logout shadow"><%= link_to "logout", session_path(current_user), :method => :delete %></p>
-  <p class="user-name shadow"><%= current_user.full_name %></p>
+  <p class="logout shadow"><%= link_to "Logout", session_path(current_user), :method => :delete %></p>
+  
+  <p class="user-name shadow"><%= link_to "#{current_user.full_name}",  edit_user_path(current_user)%></p>
   <i class="fa fa-user-o shadow" style="font-size: 1.5em;"></i>
 </div>
-    <div class="logs">
-    <% if logged_in? %>
-      <p><%= link_to "Settings", edit_user_path(current_user) %></p>
-      <p><%= link_to "Today's Questions", user_questions_path(current_user) %></p>
-      <p><%= link_to "Stats", user_path(current_user) %></p>
-    <% else %>
-      <p><%= link_to "login", new_session_path %></p>
-      <p><%= link_to "sign up", new_user_path %></p>
-    <% end %>
-    </div>
+<div class="logs">
+  <% if logged_in? %>
+    <p><%= link_to "Settings", edit_user_path(current_user) %></p>
+    <p><%= link_to "Today's Questions", user_questions_path(current_user) %></p>
+    <p><%= link_to "Stats", user_path(current_user) %></p>
+  <% else %>
+    <p><%= link_to "login", new_session_path %></p>
+    <p><%= link_to "sign up", new_user_path %></p>
+  <% end %>
+</div>

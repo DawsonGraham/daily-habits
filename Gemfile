@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'twilio-ruby'
 
+gem 'jquery-rails'
 gem 'paperclip', "~> 5.0.0"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -35,6 +36,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'gon'
 gem 'faker'
 gem 'geocoder'
+gem 'chronic'
+gem 'httparty'
+
 
 
 gem 'active_model_serializers', '~> 0.10.0'
