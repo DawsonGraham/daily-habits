@@ -51,7 +51,10 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html { }
+      # format.json { render json: @user.as_json(include: {questions: {include: \\
       format.json { render json: @user }
+      # render json: tests.as_json(:include => {:questions => {:include => :subject}, :bonuses => {:include => :subject}})
+
     end
 
   end 
