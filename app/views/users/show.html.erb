@@ -6,14 +6,15 @@
     <p><%= question.title %> <br>
     
     <% if question.integer && question.integer_answers.last_seven_days.any? %>
-      - average rating: <%= question.average_rating.to_s[0..3] %><br>
+      average rating: <%= question.average_rating.to_s[0..3] %><br>
     
     <% elsif question.boolean && question.boolean_answers.last_seven_days.any? %>
-      - completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br>
-   
+      completed: <%= question.total_boolean_responses %> time(s) in the last 7 days <br> 
 
-    <% else question.text && question.text_answers.last_seven_days.any? %>
-      - NEED A TEXT STAT HERE SINCE THE TEXT QUESTIONS WILL STILL SHOW UP
+    <% elsif question.text && question.text_answers.last_seven_days.any? %>
+      <%= question.created_time %> <br>
+      Answer characters: <%= question.answer_characters %> <br>
+      Words used: <%= question.word_count%>
   
     <% end %>
     </p>   

@@ -40,4 +40,17 @@ class Question < ApplicationRecord
     (total_tasks_completed / total_boolean_responses).to_f
   end
 
+  def created_time
+    answer = self.text_answers[0].created_at.localtime.strftime("Answered on %m/%d/%Y at %I:%M%p")
+
+  end
+
+  def answer_characters
+    self.text_answers[0].response.split().join('').length
+  end
+
+  def word_count
+    self.text_answers[0].response.split().length
+  end
+
 end
