@@ -1,43 +1,17 @@
 <div class="body-wrapper">
   <h1 class="page-title">Weekly Stats</h1>
    <div id="map"></div>
-    
-
-  <div class="question-stat">
-  <% @questions.each do |question| %>
-    <% @pics = [] %>
-
-    <% if question.integer && question.integer_answers.any? %>
-      <% question.integer_answers.each do |int_answers| %>
-          <% if int_answers.avatar  %>
-            <% @pics.push(int_answers.avatar) %>
-          <% end %>
-      <% end %>
-    <% end %>
-
-    <% if question.text && question.text_answers.any? %>
-      <% question.text_answers.each do |int_answers| %>
-          <% if int_answers.avatar %>
-            <% @pics.push(int_answers.avatar) %>
-          <% end %>
-      <% end %>
-    <% end %>
-    
-
-      
-      <!-- <p class="pics-label">Pictures from this week:</p> -->
-    
-  
-  <% end %>
-
     <br>
+    <div class="slideshow">
+    <%= render partial: "slideShow" %>
+    </div>
     <% @questions.each do |question| %>
       <p class="question-title"><%= question.title %></p> <br>
       
       <% if question.integer && question.integer_answers.last_seven_days.any? %>
       <p class="average-tag">Average Rating:</p>
         <div class="all-stars">
-
+        
           <% question.average_rating.times do %>
             <div class="stars">
               <i class="fa fa-star red"></i>
@@ -82,11 +56,7 @@
           <% end  %>
         </div>
       <% end  %>
-
     <% end %>
-
-    
-
     </div>
 
 

@@ -8,7 +8,7 @@
 </div>
 <div class="logs">
   <% if logged_in? %>
-    <p><%= link_to "Settings", edit_user_path(current_user) %></p>
+    <p><%= link_to "Profile", edit_user_path(current_user) %></p>
     <p><%= link_to "Today's Questions", user_questions_path(current_user) %></p>
     <p><%= link_to "Stats", user_path(current_user) %></p>
   <% else %>

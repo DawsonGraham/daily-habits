@@ -1,8 +1,10 @@
 <div class="body-wrapper">
   <% if @user.avatar_file_name %>
-    <%= image_tag @user.avatar.url(:medium) %>
+    <div class="profile-pic">
+      <%= image_tag @user.avatar.url(:medium) %>
+    </div>
   <% end %>
-   <h1 class="page-title">Settings</h1>
+   <h1 class="page-title">Profile</h1>
    <% @questions.each do |question| %>
    <div class="question_edit_box">
       <p class="question-title"><%= question.title %></p>
