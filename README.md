@@ -1,4 +1,4 @@
-![Habits Logo](https://dailyhabits.herokuapp.com/images/image.png)
+![Habits Logo](https://github.com/DawsonGraham/daily-habits/blob/master/image.png)
 Format: ![Daily Habits Logo](https://dailyhabits.herokuapp.com)
 
 ### Synopsis
