@@ -104,7 +104,8 @@
 
 
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClRlqdx0umR1_F6izXYYFExsl5eYUG4p8&callback=initMap">
+    <% key = ENV['GOOGLE_KEY'] %>
+      src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap">
     </script>
     <script>
       var slideIndex = 0;
