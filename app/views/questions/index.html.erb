@@ -1,5 +1,8 @@
 <div class="body-wrapper">
- <h1 class="page-title">Today's Questions</h1>  
+ <h1 class="page-title">Today's Questions</h1> 
+ <div class="profile-pic">
+      <%= image_tag ("DBC_Headshot.jpg") %>
+    </div> 
   <% @questions.each do |question| %>
   <p class="question-title"><%= question.title %></p> <br>
   <% if question.integer %>

@@ -35,13 +35,14 @@ body {
   margin-left:0.5em;
   display: inline-block;
   cursor: pointer;
+
 }
 
 .fa-user-o{
   position: relative;
   float: right;
   color:white;
-  margin-top:1em;
+  margin-top:1.43em;
   bottom:0;
 }
 
@@ -53,22 +54,22 @@ body {
 .logout {
   float: right;
   display: inline-block;
-  margin:26px 10px;
+  margin:50px 10px;
   margin-bottom: 0;
 }
 
 .logout a{
   text-decoration: none;
   color:white;
-  font-size: 130%;
+  font-size: 180%;
 }
 
 .user-name{
   float: right;
   display: inline-block;
-  margin:26px 10px;
+  margin:50px 10px;
   color:white;
-  font-size: 130%;
+  font-size: 180%;
 }
 
 .user-name a{
@@ -82,7 +83,7 @@ body {
   width: 3em;
   text-align: center;
   color: #f3f2f2;
-  font-size: 150%;
+  font-size: 250%;
   display: inline-block;
   margin-left:0.3em;
   position: relative; 
@@ -174,5 +175,9 @@ body {
 
 .shadow-dark {
   text-shadow: 1.7px 1.7px 1.7px #000;
+}
+
+.pics-title{
+  font-size:1.5em;
 }
 
