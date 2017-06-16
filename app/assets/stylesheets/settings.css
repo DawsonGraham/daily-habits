@@ -4,3 +4,13 @@
   text-decoration: none;
 }
 
+.profile-pic {
+  float: right;
+  margin: 3em;
+  border-radius: 1em;
+}
+
+.profile-pic img{
+  border-radius: 5px;
+   box-shadow: 2px 2px 1px #888888;
+}

@@ -1,72 +1,123 @@
 <div class="body-wrapper">
-  
-  <h1 class="page-title">Today's Questions</h1>
-    <% @questions.each do |question| %>
-      <div class="question-wrapper">
-        <p>Question: <%= question.title %></p>
+ <h1 class="page-title">Today's Questions</h1>  
+  <% @questions.each do |question| %>
+  <p class="question-title"><%= question.title %></p> <br>
+  <% if question.integer %>
+    <% if question.integer_answers.any? && question.integer_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d'  )%>
+      <p class="average-tag">Rating:</p>
+        <div class="all-stars">
+          <% question.integer_answers.last.response.times do %>
+            <div class="stars">
+              <i class="fa fa-star red"></i>
+            </div>
+          <% end  %>
+          <% (5 - question.integer_answers.last.response).times do%>
+            <div class="stars">
+              <i class="fa fa-star grey"></i>
+            </div>
+          <% end  %>
+        </div>
+    <% else %>
+    <div class="star-ratings">
+      <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
+        <%= f.hidden_field :question_id, value: question.id %>
+        <%= f.hidden_field :response, value: 1 %>
+        <div class="button">
+        <%= button_tag do %>
+           <i class="fa fa-star grey"></i>
+        <% end %>
+        </div>
+      <% end %>
+      <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
+        <%= f.hidden_field :question_id, value: question.id %>
+        <%= f.hidden_field :response, value: 2 %>
+        <%= button_tag do %>
+           <i class="fa fa-star grey"></i>
+        <% end %>
+      <% end %>
+      <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
+        <%= f.hidden_field :question_id, value: question.id %>
+        <%= f.hidden_field :response, value: 3 %>
+        <%= button_tag do %>
+           <i class="fa fa-star grey"></i>
+        <% end %>
+      <% end %>
+      <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
+        <%= f.hidden_field :question_id, value: question.id %>
+        <%= f.hidden_field :response, value: 4 %>
+        <%= button_tag do %>
+           <i class="fa fa-star grey"></i>
+        <% end %>
+      <% end %>
+      <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
+        <%= f.hidden_field :question_id, value: question.id %>
+        <%= f.hidden_field :response, value: 5 %>
+        <%= button_tag do %>
+           <i class="fa fa-star grey"></i>
+        <% end %>
+      <% end %>
+      </div>
+    <% end %>
+  <% end %>
 
-        <% if question.text %>
+    <% if question.boolean %>
+      <% if question.boolean_answers.any? && question.boolean_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
+            <p class="complete-tag">Completed?</p>
+              <% if question.boolean_answers.last.response == true %>
+                <div class="checks today-question">
+                  <i class="fa fa-check-square-o red "></i>            
+                </div>
+              <% else %>
+                <div class="checks today-question">
+                  <i class="fa fa-times "></i> 
+                </div>
+            <% end %>
+          <% else %>
+            <div class="complete-form">
+              <%= form_for([@user, question, question.boolean_answers.build])  do |f|%>
+                <%= f.hidden_field :response, value: true%>
+              <div class="complete-button">
+                <%= f.submit '✔️' %>
+              </div>
+              <% end %>
+  
+              <%= form_for([@user, question, question.boolean_answers.build])  do |f|%>
+                <%= f.hidden_field :response, value: false%>
+              <div class="complete-button">  
+                <%= f.submit '❌' %>
+              </div>
+              <% end %>
+            </div>
+      <% end %>
+    <% end %>
+
+      <% if question.text %>
           <% if question.text_answers.any? && question.text_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.text_answers.last.response %></p>
+            <div class="all-texts">
+              <div class="single-text">
+                <p><%= question.text_answers.last.response %></p>
+              </div>
+            </div>
 
             <% if question.text_answers.last.avatar_file_name %>
               <%= image_tag question.text_answers.last.avatar.url(:medium) %>
             <% end %>
 
           <% else %>
+          <div class="answer-question-form">
            <%= form_for([@user, question, question.text_answers.build]) do |f|%>
-                <p>
-                  <%= f.label :response %>
-                  <%= f.text_field :response %>
-                </p>
+                <div class="text-area">
+                  <%= f.text_area :response, size:"40x3", placeholder:"tell me about it" %>
+                </div>
                 <%= hidden_field :question_id, value: question.id %>
                 <%= f.submit 'submit' %>
               <% if !question.boolean && !question.integer %>
                 <%= f.file_field :avatar %>
               <% end %>
               <% end  %>
-          <% end %>
-        <% end %>
-        
-        <% if question.boolean %>
-          <% if question.boolean_answers.any? && question.boolean_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.boolean_answers.last.response %></p>
-
-            <% if question.boolean_answers.last.avatar_file_name %>
-              <%= image_tag question.boolean_answers.last.avatar.url(:medium) %>
-            <% end %>
-          <% else %>
-
-            <%= form_for([@user, question, question.boolean_answers.build]) do |f|%>
-              <%= f.hidden_field :response, value: true%>
-            <%= f.submit 'yes' %>
-            <% end %>
-
-            <%= form_for([@user, question, question.boolean_answers.build]) do |f|%>
-              <%= f.hidden_field :response, value: false%>
-            <%= f.submit 'no' %>
-            <% end %>
-            
+          </div>
           <% end %>
         <% end %>
 
-        <% if question.integer %>
-          <% if question.integer_answers.any? && question.integer_answers.last.created_at.strftime('%Y%m%d') == time_converter.strftime('%Y%m%d')%>
-            <p>Answer: <%= question.integer_answers.last.response %></p>
-            
-            <% if question.integer_answers.last.avatar_file_name %>
-              <%= image_tag question.integer_answers.last.avatar.url(:medium) %>
-            <% end %>
-          
-          <% else %>
-            <%= form_for([@user, question, question.integer_answers.build]) do |f|%>
-              <%= f.select :response, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]) %>
-            <%= f.submit 'submit' %>
-            <%= f.file_field :avatar %>
-            <% end %>
-          <% end %>
-        <% end %>
-        
-      </div>
-    <% end  %>
+    <% end %>
 </div>
