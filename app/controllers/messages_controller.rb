@@ -95,7 +95,7 @@ class MessagesController < ApplicationController
       sms = @client.messages.create(
           from: ENV['TWILIO_NUMBER'],
           to: @from_number,
-          body: "Incorrect keyword, try these:
+          body: "Incorrect keyword, try these:\n
 - 'Habits' to bring up your remaining questions to answer today
 - 'Question #)' followed by your answer types to log and complete the question for today
 - 'Weather (city name)' to get information about the weather conditions today"
