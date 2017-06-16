@@ -154,7 +154,7 @@ body {
 .logs a {
   font-family: Raleway, Arial;
   color:black;
-  text-decoration: none
+  text-decoration: none;
   margin-top:2em;
 
 }
@@ -170,7 +170,7 @@ body {
 }
 
 .error {
-  color:white;,
+  color:white;
   font-size: 10em;
   width:20em;
   height: 3em;
