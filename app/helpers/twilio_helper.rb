@@ -86,7 +86,7 @@ module TwilioHelper
           int_text_bool_check << bool_answer.created_at.strftime('%Y%m%d')
         end
         if !int_text_bool_check.include? time_converter.strftime('%Y%m%d')
-          show.push("\n #{question.id}) #{question.title} (Y/N, Rating, Text) \n\n")
+          show.push("\n #{question.id}) #{question.title} (Y/N, Rating, Text) \n")
         end
       end
     end
