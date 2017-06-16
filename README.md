@@ -1,34 +1,34 @@
-![Habits Logo](/images/image.png)
-Format: ![Alt Text](url)
+# Daily Habits
 
-## Synopsis
+### Synopsis
 
-Phase 3 Final Group Project. Welcome to Habits a daily journaling application that allows users to log daily activity via texting and mobile app interface. A Prezi presentation of this project is available here:
+Phase 3 Final Group Project. Welcome to Habits, a daily journaling application that allows users to log daily activity via texting and mobile app interface. A Prezi presentation of this project is available here:
 
 https://prezi.com/p/zn2urrazuepi/
 
-## Motivation
+### Motivation
 
 When you query the habits of many highly successful people, one common denominator stands out - journaling and taking the time to reflect daily. We set out to create an easy way to keep track of your tendencies and reactions to the things most important to you throughout your day. We aimed to make it simple and versatile enough to respond to with a simple text, yet robust enough to provide meaningful data on your habits.
 
-## Usage
+### Usage
+
 
 This mobile application has been deployed to Heroku and is accessible here:
 
 https://dailyhabits.herokuapp.com
 
-## Languages, Frameworks & APIs
+
+### Languages, Frameworks & APIs
 
 
 
+### Team Members
 
-## Team Members
+Dawson Graham -
+Ian Driscoll -
+Iliyan Ganev -
+Mike Y. Tsou -
 
-Dawson Graham
-Ian Driscoll
-Iliyan Ganev
-Mike Y. Tsou
-Omar Cameron
 
 ## License
 
@@ -45,12 +45,4 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
