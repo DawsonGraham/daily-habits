@@ -12,9 +12,8 @@ class BooleanAnswersController < ApplicationController
     @user = current_user
     @question = Question.find(params[:question_id])
     @boolean_answer = BooleanAnswer.new(boolean_answer_params)
-    @boolean_answer.question_id = @question.id
-    # NEED TO REPLACE FAKE_IP WITH request.remote_ip
-    @boolean_answer.ip_address = fake_ip
+    @boolean_answer.question_id = @question.id   
+    @boolean_answer.ip_address = request.remote_ip
       if @boolean_answer.save
         redirect_to user_questions_path(@user)
       else
