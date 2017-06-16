@@ -26,20 +26,7 @@
 
       
       <!-- <p class="pics-label">Pictures from this week:</p> -->
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <% @pics.each do |pic| %>
-            
-           <%= image_tag pic.url(:medium) %>
-            <div style="text-align:center">
-              <span class="dot"></span>  
-            </div>
-            
-         
-        <% end %>
-      </div>
     
-    </div>
   
   <% end %>
 
