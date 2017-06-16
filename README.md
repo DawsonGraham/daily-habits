@@ -1,5 +1,5 @@
-![Habits Logo](/images/image.png)
-Format: ![Alt Text](url)
+![Habits Logo](https://dailyhabits.herokuapp.com/images/image.png)
+Format: ![Daily Habits Logo](https://dailyhabits.herokuapp.com)
 
 ## Synopsis
 
@@ -19,8 +19,15 @@ https://dailyhabits.herokuapp.com
 
 ## Languages, Frameworks & APIs
 
+Core Languages: Ruby & JS
+Backend and Web Application Views: Rails 5.0
+Mobile Views: React Native
 
+Gems: Paperclip, Gon, RuboCop, GeoCoder, Weather Underground and many more!
 
+APIs: Twilio, GoogleMaps
+
+DevTools: ESLint
 
 ## Team Members
 
