@@ -3,7 +3,7 @@
   
     <%= form_for :user, url: users_path, html: {  multipart: true } do |f| %>
       <p>
-      <div class="log-label">
+      <div class="log-label shadow">
         <%= f.label :first_name %> 
       </div><br>
       <div class="log-form">
@@ -12,7 +12,7 @@
       </p>
     
       <p>
-      <div class="log-label">
+      <div class="log-label shadow">
         <%= f.label :last_name %>
       </div><br>
       <div class="log-form">
@@ -21,7 +21,7 @@
       </p>
     
       <p>
-      <div class="log-label">
+      <div class="log-label shadow">
         <%= f.label :email %>
       </div> <br>
       <div class="log-form">
@@ -30,7 +30,7 @@
       </p>
   
       <p>
-      <div class="log-label">
+      <div class="log-label shadow">
         <%= f.label :phone_number %>
       </div> <br>
       <div class="log-form">
@@ -39,21 +39,23 @@
       </p>
     
       <p>
-      <div class="log-label">
+      <div class="log-label shadow">
         <%= f.label :password %> 
       </div><br>
       <div class="log-form">
         <%= f.password_field :password, placeholder: '  password', required: true,  autofocus: true   %>
-      </div>
+      </div> <br>
+      <div class="log-label shadow">
+        <%= f.label :picture %> 
+      </div><br>
       </p>
         <div class="image-button">
           <%= f.file_field :avatar %>
         </div>
-      <p>
+      
       <div class="log-button">
         <%= f.submit "Register" %>
       </div>
-      </p>
     
     <% end  %>
   

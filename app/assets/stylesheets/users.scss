@@ -59,9 +59,32 @@
 }
 
 .question_form{
-  width:30%;
-  margin:auto;
-  align-items: center;
+  margin-left:1em;
+}
+
+.question_form input[type=submit]{
+  font-size:20px;
+  background-color: #ff3333;
+  border:none;
+  color: white;
+  border-radius: 4px;
+}
+
+input[type=checkbox] {
+  transform: scale(1.2);
+}
+
+.box input {
+  font-size: 30px;
+}
+
+.box {
+  font-size:25px;
+  margin:10px auto;
+}
+
+textarea{
+  font-size:17px;
 }
 
 .register_form {
@@ -70,18 +93,18 @@
 }
 
 .reg-link{
-  width:10em;
+  width:7em;
+  line-height:35px;
   margin:auto;
   text-align: center;
-  font-size:130%;
-  height:1.5em;
-  opacity:0.8;
   border-radius:10px;
+  background-color: #ff3333;
 }
 
 .reg-link a{
-  color:black;
+  color:white;
   text-decoration:none;
+  vertical-align: middle;
 }
 
 .image-button{

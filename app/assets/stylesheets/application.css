@@ -53,27 +53,29 @@ body {
 .logout {
   float: right;
   display: inline-block;
-  margin:30px 10px;
+  margin:26px 10px;
   margin-bottom: 0;
 }
 
 .logout a{
   text-decoration: none;
   color:white;
-  font-size: 120%;
+  font-size: 130%;
 }
 
 .user-name{
   float: right;
   display: inline-block;
-  margin:30px 10px;
+  margin:26px 10px;
   color:white;
-  font-size: 120%;
+  font-size: 130%;
 }
 
 .user-name a{
   text-decoration: none;
   color:white;
+  font-weight: bold;
+
 }
 .nav-title{
   height: 1em;
@@ -93,6 +95,7 @@ body {
   width: 35%;
   float: right;
   margin-right:1em;
+  margin-bottom: 2em;
   border-radius: 1em;
   box-shadow: 2px 2px 1px #888888;
 
@@ -120,7 +123,7 @@ body {
   height: 1.5em;
   width: 3em;
   text-align: center;
-  margin: 2.5em auto 0 auto;
+  margin: 2em auto 0 auto;
   font-size:9em;
   color: #f3f2f2;
 }
@@ -133,7 +136,7 @@ body {
   background-color: white;
   border-radius: 5px;
   margin-top: 10px;
-  /*display: none;*/
+  display: none;
 }
 .logs p {
   font-family: Raleway, Arial;
@@ -177,11 +180,9 @@ body {
 
 .shadow {
   text-shadow: 1px 1px 1px #000;
-/*  text-shadow:
-    0px 0px 0 #000,
-     
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-   -1px  1px 0 #000,
-    1px  1px 0 #000;*/
 }
+
+.shadow-dark {
+  text-shadow: 1.7px 1.7px 1.7px #000;
+}
+

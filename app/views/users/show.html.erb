@@ -1,13 +1,54 @@
 <div class="body-wrapper">
-  <h1 class="stats-title">Weekly Stats</h1>
+  <h1 class="page-title">Weekly Stats</h1>
    <div id="map"></div>
     
 
   <div class="question-stat">
+  <% @questions.each do |question| %>
+    <% @pics = [] %>
+
+    <% if question.integer && question.integer_answers.any? %>
+      <% question.integer_answers.each do |int_answers| %>
+          <% if int_answers.avatar  %>
+            <% @pics.push(int_answers.avatar) %>
+          <% end %>
+      <% end %>
+    <% end %>
+
+    <% if question.text && question.text_answers.any? %>
+      <% question.text_answers.each do |int_answers| %>
+          <% if int_answers.avatar %>
+            <% @pics.push(int_answers.avatar) %>
+          <% end %>
+      <% end %>
+    <% end %>
+    
+
+      
+      <!-- <p class="pics-label">Pictures from this week:</p> -->
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <% @pics.each do |pic| %>
+            
+           <%= image_tag pic.url(:medium) %>
+            <div style="text-align:center">
+              <span class="dot"></span>  
+            </div>
+            
+         
+        <% end %>
+      </div>
+    
+    </div>
+  
+  <% end %>
+
+    <br>
     <% @questions.each do |question| %>
       <p class="question-title"><%= question.title %></p> <br>
       
       <% if question.integer && question.integer_answers.last_seven_days.any? %>
+      <p class="average-tag">Average Rating:</p>
         <div class="all-stars">
 
           <% question.average_rating.times do %>
@@ -43,25 +84,47 @@
         </div>
       <% end %>
 
+      <% if question.text && question.text_answers.last_seven_days.any? %>
+        <div class="all-texts">
+          <% day_check_text(question).each do |day| %>        
+            <% if day.values[0] %>
+              <div class="single-text">
+                <p><%= day.keys[0] %> - <%= day.values[0] %></p>
+              </div>
+            <% end %>
+          <% end  %>
+        </div>
+      <% end  %>
+
     <% end %>
 
-    <!-- <div class="caro-wrapper">
-      <div class="shape">
-        <div class="plane p1"></div>
-        <div class="plane p2"></div> 
-        <div class="plane p3"></div>
-        <div class="plane p4"></div>
-        <div class="plane p5"></div>
-        <div class="plane p6"></div> 
-        <div class="plane p7"></div>
-        <div class="plane p8"></div>
-      </div>
-    </div> -->
+    
 
-  </div>
+    </div>
 
 
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClRlqdx0umR1_F6izXYYFExsl5eYUG4p8&callback=initMap">
+    </script>
+    <script>
+      var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+             slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex> slides.length) {slideIndex = 1}    
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "")      ;
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 5000);
+      }
     </script>
 </div>
