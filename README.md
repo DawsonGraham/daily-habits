@@ -3,11 +3,9 @@ Format: ![Alt Text](url)
 
 ## Synopsis
 
-Phase 3 Final Group Project. Welcome to Habits a daily journaling application that allows users to log daily activity via texting and mobile app interface.
+Phase 3 Final Group Project. Welcome to Habits a daily journaling application that allows users to log daily activity via texting and mobile app interface. A Prezi presentation of this project is available here:
 
-## Code Example
-
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+https://prezi.com/p/zn2urrazuepi/
 
 ## Motivation
 
@@ -15,7 +13,14 @@ When you query the habits of many highly successful people, one common denominat
 
 ## Usage
 
-Provide code examples and explanations of how to get the project.
+This mobile application has been deployed to Heroku and is accessible here:
+
+https://dailyhabits.herokuapp.com
+
+## Languages, Frameworks & APIs
+
+
+
 
 ## Team Members
 
