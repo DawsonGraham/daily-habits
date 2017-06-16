@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
         to: @from_number,
         body: "Hey #{user.first_name}! Here's your questions for today: \n" + questions_today + 
  
-"\nPlease answer with the question's number and parenthesis as the first two characters. Ex: '1) ...'"
+"Please answer with the question's number and parenthesis as the first two characters. Ex: '1) ...'"
         )
       end
 
