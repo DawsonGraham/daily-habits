@@ -13,7 +13,7 @@ class BooleanAnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @boolean_answer = BooleanAnswer.new(boolean_answer_params)
     @boolean_answer.question_id = @question.id   
-    @boolean_answer.ip_address = "136.0.16.217"
+    @boolean_answer.ip_address = request.remote_ip
       if @boolean_answer.save
         redirect_to user_questions_path(@user)
       else

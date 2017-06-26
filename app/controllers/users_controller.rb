@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       login(@user)
       respond_to do |format|
-        format.html { redirect_to @user, notice: "Sign up successful dick" }
+        format.html { redirect_to @user, notice: "Signup Successful!" }
         format.json { render json: @user }
       end
     else

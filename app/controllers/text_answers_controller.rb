@@ -15,7 +15,7 @@ class TextAnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @text_answer = TextAnswer.new(text_answer_params)
     @text_answer.question_id = @question.id
-    @text_answer.ip_address = "136.0.16.217"
+    @text_answer.ip_address = request.remote_ip
     if @text_answer.save
       redirect_to user_questions_path(@user)
     else
