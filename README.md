@@ -13,7 +13,7 @@ When you query the habits of many highly successful people, one common denominat
 ### Usage
 
 
-This mobile application has been deployed to Heroku and is accessible here:
+This application has been deployed to Heroku and is accessible here:
 
 https://dailyhabits.herokuapp.com
 
