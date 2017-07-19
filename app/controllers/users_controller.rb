@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 
 class UsersController < ApplicationController
+  include SessionsHelper
 
   def index
     @disable_nav = true
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     @questions = Question.where(user_id: @user.id)
   end
 
