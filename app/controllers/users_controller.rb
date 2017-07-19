@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
+      # send intro text here
+      response = Twilio::TwiML::MessagingResponse.new
+      response.message(to: "+1#{@user.phone_number}"
+                       body: "Thanks for registering with Habits. After creating your daily questions online, text 'Habits' to this number to see and answer your questions.")
       respond_to do |format|
         format.html { redirect_to @user, notice: "Signup Successful!" }
         format.json { render json: @user }
