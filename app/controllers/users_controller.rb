@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
     @questions = Question.where(user_id: @user.id)
   end
 
