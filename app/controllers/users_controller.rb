@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class UsersController < ApplicationController
 
   def index
@@ -14,16 +16,19 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      respond_to do |format|
-        format.html { redirect_to @user, notice: "Signup Successful!" }
-        format.json { render json: @user }
-      end
+      # send intro text here
+      @client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      @message = @client.messages.create(
+        from: ENV['TWILIO_NUMBER'],
+        body: "Hi #{@user.first_name}! Thanks for registering with Habits. After creating your daily questions online, text 'Habits' to this number to see and answer your questions.",
+        to: "+1#{@user.phone_number}")
+      
+      # respond_to do |format|
+      #   format.html { redirect_to @user, notice: "Signup Successful!" }
+      #   format.json { render json: @user }
+      # end
     else
       @errors = @user.errors.full_messages
-      respond_to do |format|
-        format.html { render 'new' }
-        format.json { render json: @errors }
-      end
     end 
   end
 
