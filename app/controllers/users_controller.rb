@@ -17,21 +17,18 @@ class UsersController < ApplicationController
     if @user.save
       login(@user)
       # send intro text here
-      response = Twilio::TwiML::MessagingResponse.new
-      response.message do |message|
-        message.body("Hi #{@user.first_name}! Thanks for registering with Habits. After creating your daily questions online, text 'Habits' to this number to see and answer your questions.")
-        message.to("+1#{@user.phone_number}")
-      end
-      respond_to do |format|
-        format.html { redirect_to @user, notice: "Signup Successful!" }
-        format.json { render json: @user }
-      end
+      @client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      @message = @client.messages.create(
+        from: ENV['TWILIO_NUMBER'],
+        body: "Hi #{@user.first_name}! Thanks for registering with Habits. After creating your daily questions online, text 'Habits' to this number to see and answer your questions.",
+        to: "+1#{@user.phone_number}")
+      
+      # respond_to do |format|
+      #   format.html { redirect_to @user, notice: "Signup Successful!" }
+      #   format.json { render json: @user }
+      # end
     else
       @errors = @user.errors.full_messages
-      respond_to do |format|
-        format.html { render 'new' }
-        format.json { render json: @errors }
-      end
     end 
   end
 
