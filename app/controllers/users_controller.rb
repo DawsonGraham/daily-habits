@@ -18,8 +18,10 @@ class UsersController < ApplicationController
       login(@user)
       # send intro text here
       response = Twilio::TwiML::MessagingResponse.new
-      response.message(to: "+1#{@user.phone_number}",
-                       body: "Hi #{@user.first_name}! Thanks for registering with Habits. After creating your daily questions online, text 'Habits' to this number to see and answer your questions.")
+      response.message do |message|
+        message.body("Hi #{@user.first_name}! Thanks for registering with Habits. After creating your daily questions online, text 'Habits' to this number to see and answer your questions.")
+        message.to("+1#{@user.phone_number}")
+      end
       respond_to do |format|
         format.html { redirect_to @user, notice: "Signup Successful!" }
         format.json { render json: @user }
