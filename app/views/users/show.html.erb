@@ -2,9 +2,9 @@
   <h1 class="page-title">Weekly Stats</h1>
    <div id="map"></div>
     <br>
-    <div class="slideshow">
-    <%= render partial: "slideShow" %>
-    </div>
+    <!-- <div class="slideshow">
+    # <%= render partial: "slideShow" %>
+    </div> -->
     <% @questions.each do |question| %>
       <p class="question-title"><%= question.title %></p> <br>
       
@@ -64,7 +64,7 @@
     <% key = ENV['GOOGLE_KEY'] %>
       src="https://maps.googleapis.com/maps/api/js?key=<%= key %>&callback=initMap">
     </script>
-    
+
     <!-- <script>
       var slideIndex = 0;
       showSlides();
