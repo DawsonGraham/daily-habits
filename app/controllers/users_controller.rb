@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 
 class UsersController < ApplicationController
+  include SessionsHelper
 
   def index
     @disable_nav = true
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
       #   format.html { redirect_to @user, notice: "Signup Successful!" }
       #   format.json { render json: @user }
       # end
+      redirect_to edit_user_path(@user)
     else
       @errors = @user.errors.full_messages
     end 

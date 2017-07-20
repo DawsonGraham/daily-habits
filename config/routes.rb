@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/questions/:id', :to => 'questions#destroy'
 
+  post 'users/new', :to => 'users#create'
+
   resources :users, only: [:index, :new, :show, :create, :edit] do
     resources :questions, only: [:index, :show, :new, :create, :destroy, :edit] do
       resources :text_answers, only: [:show, :new, :create]
