@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       #   format.html { redirect_to @user, notice: "Signup Successful!" }
       #   format.json { render json: @user }
       # end
+      redirect_to @user
     else
       @errors = @user.errors.full_messages
     end 
